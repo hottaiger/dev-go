@@ -167,7 +167,6 @@ export const DEFAULT_QUICK_NAV: QuickNavItem[] = [
   { id: 'eleduck', title: '电鸭社区', url: 'https://eleduck.com', category: 'community' },
   // 工具
   { id: 'figma', title: 'Figma', url: 'https://www.figma.com', category: 'tools' },
-  { id: '24mail', title: '临时邮箱', url: 'https://24mail.chacuo.net', category: 'tools' },
   { id: 'excalidraw', title: 'Excalidraw', url: 'https://excalidraw.com', category: 'tools' },
   { id: 'codepen', title: 'CodePen', url: 'https://codepen.io', category: 'tools' },
   { id: 'tinypng', title: 'TinyPNG', url: 'https://tinypng.com', category: 'tools' },
