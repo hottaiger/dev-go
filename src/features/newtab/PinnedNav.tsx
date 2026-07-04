@@ -43,7 +43,7 @@ export default function PinnedNav({ items, onUnpin }: PinnedNavProps) {
       <div className='mb-2 flex items-center gap-1.5 px-1 text-xs text-slate-400 dark:text-slate-500'>
         <PinIcon className='h-3 w-3' />
         <span>固定</span>
-        <span className='text-slate-300 dark:text-slate-600'>
+        <span className='text-slate-500 dark:text-slate-600'>
           {items.length}/{PIN_LIMIT}
         </span>
       </div>
