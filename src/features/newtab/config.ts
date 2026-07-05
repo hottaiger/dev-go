@@ -4,7 +4,15 @@
  * 导出为 JSON；导入时做容错校验，仅接收合法字段，旧文件缺字段也能导入。
  */
 
-import type { QuickNavCategoryLabels, QuickNavItem, ThemeMode } from '@/utils/settings'
+import {
+  isNewtabShaderEffect,
+  isNewtabShaderMode,
+  type NewtabShaderEffect,
+  type NewtabShaderMode,
+  type QuickNavCategoryLabels,
+  type QuickNavItem,
+  type ThemeMode,
+} from '@/utils/settings'
 import { isQuickNavCategory, sanitizeCategoryLabels } from './categories'
 
 const FORMAT = 'devgo-newtab'
@@ -12,6 +20,8 @@ const FORMAT = 'devgo-newtab'
 export interface NewTabConfig {
   searchEngine?: string
   themeMode?: ThemeMode
+  shaderMode?: NewtabShaderMode
+  shaderEffect?: NewtabShaderEffect
   /** 分类自定义名称（旧文件无此字段） */
   categoryLabels?: QuickNavCategoryLabels
   quickNavItems: QuickNavItem[]
@@ -66,6 +76,8 @@ export function serializeConfig(config: NewTabConfig, now: string): string {
     exportedAt: now,
     searchEngine: config.searchEngine,
     themeMode: config.themeMode,
+    shaderMode: config.shaderMode,
+    shaderEffect: config.shaderEffect,
     categoryLabels: config.categoryLabels,
     quickNavItems: config.quickNavItems,
   }
@@ -100,12 +112,16 @@ export function parseConfig(text: string): NewTabConfig {
   if (items.length === 0) throw new Error('文件中没有可导入的导航项')
 
   const themeMode = sanitizeThemeMode(obj.themeMode)
+  const shaderMode = isNewtabShaderMode(obj.shaderMode) ? obj.shaderMode : undefined
+  const shaderEffect = isNewtabShaderEffect(obj.shaderEffect) ? obj.shaderEffect : undefined
   const searchEngine = typeof obj.searchEngine === 'string' ? obj.searchEngine : undefined
   const categoryLabels = sanitizeCategoryLabels(obj.categoryLabels)
 
   return {
     quickNavItems: items,
     themeMode,
+    shaderMode,
+    shaderEffect,
     searchEngine,
     ...(Object.keys(categoryLabels).length > 0 ? { categoryLabels } : {}),
   }

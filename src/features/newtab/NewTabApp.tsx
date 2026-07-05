@@ -5,7 +5,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 import { SHIP_NAME, SITE_URL } from '@/utils/constants'
-import { newtabActiveCategory, quickNavBuiltinPagesSeeded, quickNavCategoryLabels, quickNavCategorySeeded, quickNavDefaultPinsSeeded, quickNavItems, searchEngine, themeMode, type QuickNavCategoryId, type QuickNavCategoryLabels, type QuickNavItem, type ThemeMode } from '@/utils/settings' // prettier-ignore
+import { newtabActiveCategory, newtabShaderEffect, newtabShaderMode, newtabShaderRandomSeeded, quickNavBuiltinPagesSeeded, quickNavCategoryLabels, quickNavCategorySeeded, quickNavDefaultPinsSeeded, quickNavItems, searchEngine, themeMode, type NewtabShaderEffect, type NewtabShaderMode, type QuickNavCategoryId, type QuickNavCategoryLabels, type QuickNavItem, type ThemeMode } from '@/utils/settings' // prettier-ignore
 import { applyTheme, normalizeThemeMode, watchAutoTheme } from '@/utils/theme'
 import { CATEGORY_LABEL_MAX, defaultLabelOf, isQuickNavCategory } from './categories'
 import CategoryTabs, { PencilIcon } from './CategoryTabs'
@@ -20,18 +20,27 @@ import {
 } from './engines'
 import PinnedNav, { PIN_LIMIT } from './PinnedNav'
 import QuickNav from './QuickNav'
-import QuietBackground from './QuietBackground'
+import QuietBackground, { SHADER_EFFECT_OPTIONS } from './QuietBackground'
 import SearchBar from './SearchBar'
 import TodoBoard from './TodoBoard'
 
 const THEME_LABEL: Record<ThemeMode, string> = { auto: '自动', light: '浅色', dark: '深色' }
 const THEME_OPTIONS: ThemeMode[] = ['dark', 'auto', 'light']
+const SHADER_MODE_LABEL: Record<NewtabShaderMode, string> = { random: '随机', fixed: '固定' }
+const FIRST_RANDOM_SHADER_EFFECT: NewtabShaderEffect = 'mesh'
 const THEME_THUMB_OFFSET: Record<ThemeMode, string> = {
   dark: 'translate-x-0',
   auto: 'translate-x-[41px]',
   light: 'translate-x-[82px]',
 }
 const DEFAULT_PINNED_ORDER = new Map(DEFAULT_PINNED_NAV_IDS.map((id, index) => [id, index]))
+
+function getRandomShaderEffect(current?: NewtabShaderEffect): NewtabShaderEffect {
+  const effects = SHADER_EFFECT_OPTIONS.map((item) => item.id)
+  const pool =
+    current && effects.length > 1 ? effects.filter((effect) => effect !== current) : effects
+  return pool[Math.floor(Math.random() * pool.length)] ?? FIRST_RANDOM_SHADER_EFFECT
+}
 
 function MoonIcon() {
   return (
@@ -88,6 +97,18 @@ function TodoIcon() {
         strokeLinecap='round'
         strokeLinejoin='round'
         strokeWidth='1.6'
+      />
+    </svg>
+  )
+}
+
+function BackgroundIcon() {
+  return (
+    <svg viewBox='0 0 24 24' aria-hidden='true' className='h-4 w-4 fill-none stroke-current'>
+      <path
+        d='M4 8.5c2.6-2.7 5.3-2.7 8 0s5.4 2.7 8 0M4 15.5c2.6-2.7 5.3-2.7 8 0s5.4 2.7 8 0'
+        strokeLinecap='round'
+        strokeWidth='2'
       />
     </svg>
   )
@@ -185,6 +206,9 @@ function ThemeSwitch({
 
 export default function NewTabApp() {
   const [mode, setMode] = useState<ThemeMode>('auto')
+  const [shaderMode, setShaderMode] = useState<NewtabShaderMode>('random')
+  const [shaderEffect, setShaderEffect] = useState<NewtabShaderEffect>(FIRST_RANDOM_SHADER_EFFECT)
+  const [effectMenuOpen, setEffectMenuOpen] = useState(false)
   const [effectiveDark, setEffectiveDark] = useState(false)
   const [items, setItems] = useState<QuickNavItem[]>([])
   const [activeCategory, setActiveCategory] = useState<QuickNavCategoryId>('common')
@@ -194,6 +218,7 @@ export default function NewTabApp() {
   const [toast, setToast] = useState('')
   const [todoOpen, setTodoOpen] = useState(() => window.location.hash === '#todo')
   const fileRef = useRef<HTMLInputElement>(null)
+  const effectMenuRef = useRef<HTMLDivElement>(null)
 
   // 支持通过 #todo 唤出看板（Alt+3 快捷键打开新标签页时带上该 hash）
   useEffect(() => {
@@ -206,13 +231,42 @@ export default function NewTabApp() {
 
   // 初始化主题
   useEffect(() => {
-    themeMode.getValue().then((stored) => {
+    Promise.all([
+      themeMode.getValue(),
+      newtabShaderMode.getValue(),
+      newtabShaderEffect.getValue(),
+      newtabShaderRandomSeeded.getValue(),
+    ]).then(([stored, storedShaderMode, storedShaderEffect, randomSeeded]) => {
       const m = normalizeThemeMode(stored)
+      const nextShaderEffect =
+        storedShaderMode === 'random'
+          ? randomSeeded
+            ? getRandomShaderEffect()
+            : FIRST_RANDOM_SHADER_EFFECT
+          : storedShaderEffect
+
+      setShaderMode(storedShaderMode)
+      setShaderEffect(nextShaderEffect)
       setMode(m)
       setEffectiveDark(applyTheme(m))
       if (stored !== m) themeMode.setValue(m)
+      if (storedShaderMode === 'random' && !randomSeeded) {
+        newtabShaderRandomSeeded.setValue(true)
+      }
     })
   }, [])
+
+  useEffect(() => {
+    if (!effectMenuOpen) return undefined
+
+    const close = (event: MouseEvent) => {
+      if (effectMenuRef.current?.contains(event.target as Node)) return
+      setEffectMenuOpen(false)
+    }
+
+    document.addEventListener('mousedown', close)
+    return () => document.removeEventListener('mousedown', close)
+  }, [effectMenuOpen])
 
   // auto 模式下按时间分界点自动切换。
   useLayoutEffect(() => {
@@ -311,6 +365,28 @@ export default function NewTabApp() {
     themeMode.setValue(next)
   }
 
+  const changeShaderMode = (next: NewtabShaderMode) => {
+    setShaderMode(next)
+    newtabShaderMode.setValue(next)
+
+    if (next === 'random') {
+      const nextEffect = getRandomShaderEffect(shaderEffect)
+      setShaderEffect(nextEffect)
+      newtabShaderRandomSeeded.setValue(true)
+      return
+    }
+
+    newtabShaderEffect.setValue(shaderEffect)
+  }
+
+  const changeShaderEffect = (next: NewtabShaderEffect) => {
+    setShaderMode('fixed')
+    setShaderEffect(next)
+    setEffectMenuOpen(false)
+    newtabShaderMode.setValue('fixed')
+    newtabShaderEffect.setValue(next)
+  }
+
   const showToast = (msg: string) => {
     setToast(msg)
     setTimeout(() => setToast(''), 2400)
@@ -319,7 +395,14 @@ export default function NewTabApp() {
   const handleExport = async () => {
     const engine = await searchEngine.getValue()
     downloadConfig(
-      { quickNavItems: items, themeMode: mode, searchEngine: engine, categoryLabels },
+      {
+        quickNavItems: items,
+        themeMode: mode,
+        shaderMode,
+        shaderEffect,
+        searchEngine: engine,
+        categoryLabels,
+      },
       new Date().toISOString(),
     )
   }
@@ -337,6 +420,15 @@ export default function NewTabApp() {
         setEffectiveDark(applyTheme(config.themeMode))
         themeMode.setValue(config.themeMode)
       }
+      if (config.shaderEffect) {
+        setShaderEffect(config.shaderEffect)
+        newtabShaderEffect.setValue(config.shaderEffect)
+      }
+      if (config.shaderMode) {
+        setShaderMode(config.shaderMode)
+        newtabShaderMode.setValue(config.shaderMode)
+        if (config.shaderMode === 'random') newtabShaderRandomSeeded.setValue(true)
+      }
       if (config.searchEngine) searchEngine.setValue(config.searchEngine)
       if (config.categoryLabels) {
         const nextLabels = { ...categoryLabels, ...config.categoryLabels }
@@ -349,11 +441,15 @@ export default function NewTabApp() {
     }
   }
 
+  const shaderEffectLabel =
+    SHADER_EFFECT_OPTIONS.find((item) => item.id === shaderEffect)?.label ?? '流体'
+  const shaderButtonLabel = `${SHADER_MODE_LABEL[shaderMode]} · ${shaderEffectLabel}`
+
   return (
     // 底色在 body.quiet-page 上（见 global.css）；根容器必须保持透明，
     // 否则会盖住 -z-10 的 QuietBackground 特效层
     <div className='relative flex min-h-screen flex-col text-slate-800 dark:text-slate-100'>
-      <QuietBackground />
+      <QuietBackground effect={shaderEffect} />
       {/* 顶栏 */}
       <header className='flex items-center justify-between px-6 py-4'>
         <div className='flex items-center gap-2'>
@@ -370,12 +466,60 @@ export default function NewTabApp() {
             <TodoIcon />
             <span>TODO</span>
           </button>
+          <div ref={effectMenuRef} className='relative'>
+            <button
+              type='button'
+              onClick={() => setEffectMenuOpen((value) => !value)}
+              title='切换背景效果'
+              className='flex h-10 items-center gap-1.5 rounded-full border border-slate-200 bg-white/70 px-3.5 text-sm font-medium text-slate-600 shadow-sm transition-all hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-700 hover:shadow-md dark:border-white/10 dark:bg-white/[0.06] dark:text-slate-300 dark:hover:border-teal-500 dark:hover:text-teal-300'
+            >
+              <BackgroundIcon />
+              <span>{shaderButtonLabel}</span>
+            </button>
+            {effectMenuOpen && (
+              <div className='aurora-dropdown absolute right-0 top-full z-[70] mt-2 w-64 overflow-hidden rounded-2xl p-1.5'>
+                <div className='mb-1 grid grid-cols-2 gap-1 rounded-xl bg-slate-950/[0.04] p-1 dark:bg-white/[0.05]'>
+                  {(['random', 'fixed'] as const).map((item) => (
+                    <button
+                      key={item}
+                      type='button'
+                      onClick={() => changeShaderMode(item)}
+                      className={`rounded-lg px-2.5 py-1.5 text-sm font-medium transition-colors ${
+                        shaderMode === item
+                          ? 'bg-white text-teal-700 shadow-sm dark:bg-white/10 dark:text-teal-200'
+                          : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-100'
+                      }`}
+                    >
+                      {SHADER_MODE_LABEL[item]}
+                    </button>
+                  ))}
+                </div>
+                <div className='grid grid-cols-2 gap-1'>
+                  {SHADER_EFFECT_OPTIONS.map((item) => (
+                    <button
+                      key={item.id}
+                      type='button'
+                      onClick={() => changeShaderEffect(item.id)}
+                      className={`aurora-dropdown-item flex w-full items-center justify-between rounded-xl px-2.5 py-2 text-left text-sm ${
+                        item.id === shaderEffect ? 'is-selected' : ''
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      {item.id === shaderEffect && (
+                        <span className='h-1.5 w-1.5 rounded-full bg-teal-500' />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
           <ThemeSwitch mode={mode} effectiveDark={effectiveDark} onChange={changeTheme} />
         </div>
       </header>
 
       {/* 主体 */}
-      <main className='mx-auto flex w-full max-w-4xl flex-1 flex-col items-center px-6 justify-center'>
+      <main className='mx-auto flex w-full max-w-6xl flex-1 flex-col items-center px-6 justify-center'>
         {/* 弹性留白：空间充裕时撑到 12vh（与原 mt-[12vh] 视觉一致），
             内容变多（如固定栏两行）空间不足时自动压缩，最低保留 32px 才开始滚动 */}
         <div className='mb-8 text-center'>
@@ -395,7 +539,9 @@ export default function NewTabApp() {
           </p>
         </div>
 
-        <SearchBar navItems={items} />
+        <div className='w-full max-w-4xl'>
+          <SearchBar navItems={items} />
+        </div>
 
         {/* 固定栏：搜索框与分类列表之间 */}
         {ready && <PinnedNav items={pinnedItems} onUnpin={togglePin} />}

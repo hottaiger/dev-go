@@ -122,6 +122,42 @@ export const enableReloadOnProxySwitch = storage.defineItem<boolean>(
 export type ThemeMode = 'auto' | 'light' | 'dark'
 export type StoredThemeMode = ThemeMode | 'system'
 
+/** 新标签页动态背景模式：随机 / 固定 */
+export type NewtabShaderMode = 'random' | 'fixed'
+
+export function isNewtabShaderMode(value: unknown): value is NewtabShaderMode {
+  return value === 'random' || value === 'fixed'
+}
+
+/** 新标签页动态背景效果 */
+export const NEWTAB_SHADER_EFFECTS = [
+  'mesh',
+  'neuro',
+  'simplex',
+  'swirl',
+  'smoke',
+  'orbit',
+  'metaballs',
+  'perlin',
+  'voronoi',
+  'warp',
+  'rays',
+  'heatmap',
+  'spiral',
+  'dither',
+  'grain',
+  'panels',
+  'border',
+  'water',
+  'liquid',
+  'gem',
+] as const
+export type NewtabShaderEffect = typeof NEWTAB_SHADER_EFFECTS[number]
+
+export function isNewtabShaderEffect(value: unknown): value is NewtabShaderEffect {
+  return typeof value === 'string' && (NEWTAB_SHADER_EFFECTS as readonly string[]).includes(value)
+}
+
 /** 快捷导航分类 id（展示常量见 features/newtab/categories.ts） */
 export type QuickNavCategoryId = 'common' | 'dev' | 'ai' | 'community' | 'tools'
 
@@ -181,6 +217,23 @@ export const quickNavBuiltinPagesSeeded = storage.defineItem<boolean>(
 export const themeMode = storage.defineItem<StoredThemeMode>('sync:themeMode', {
   fallback: 'auto',
 })
+
+/** 新标签页动态背景效果 */
+export const newtabShaderEffect = storage.defineItem<NewtabShaderEffect>(
+  'sync:newtabShaderEffect',
+  { fallback: 'mesh' },
+)
+
+/** 新标签页动态背景模式 */
+export const newtabShaderMode = storage.defineItem<NewtabShaderMode>('sync:newtabShaderMode', {
+  fallback: 'random',
+})
+
+/** 随机背景首次展示标记：默认随机，但首次固定展示流体 */
+export const newtabShaderRandomSeeded = storage.defineItem<boolean>(
+  'sync:newtabShaderRandomSeeded',
+  { fallback: false },
+)
 
 /** 任务状态：待办 / 进行中 / 已完成 */
 export type TodoStatus = 'todo' | 'doing' | 'done'

@@ -13,6 +13,8 @@ import {
   lookupProvider,
   networkMode,
   networkRuleList,
+  newtabShaderEffect,
+  newtabShaderMode,
   quickNavCategoryLabels,
   quickNavCategorySeeded,
   quickNavItems,
@@ -61,6 +63,8 @@ const BACKUP_ITEMS: Record<string, BackupItem> = {
   quickNavItems,
   quickNavCategoryLabels,
   themeMode,
+  newtabShaderEffect,
+  newtabShaderMode,
   todoItems,
   defaultPopupTab,
 }

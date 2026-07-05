@@ -1,14 +1,14 @@
 /**
  * 固定栏：钉住的导航卡片，位于搜索框与分类列表之间。
- * 上限 16 个（满两行），满后由 NewTabApp 拦截并提示；这里负责展示与移出。
+ * 上限 20 个（满两行），满后由 NewTabApp 拦截并提示；这里负责展示与移出。
  */
 
 import type { QuickNavItem } from '@/utils/settings'
 import { openBrowserInternalUrl } from './navUrl'
 import SiteIcon from './SiteIcon'
 
-/** 固定栏容量上限：md 及以上为 8 列，正好两行 */
-export const PIN_LIMIT = 16
+/** 固定栏容量上限：lg 及以上为 10 列，正好两行 */
+export const PIN_LIMIT = 20
 
 export function PinIcon({ className = 'h-3 w-3' }: { className?: string }) {
   return (
@@ -47,7 +47,7 @@ export default function PinnedNav({ items, onUnpin }: PinnedNavProps) {
           {items.length}/{PIN_LIMIT}
         </span>
       </div>
-      <div className='grid grid-cols-4 gap-2.5 sm:grid-cols-6 md:grid-cols-8'>
+      <div className='grid grid-cols-5 gap-2.5 sm:grid-cols-8 lg:grid-cols-10'>
         {items.map((item) => (
           <div key={item.id} className='group relative'>
             <a

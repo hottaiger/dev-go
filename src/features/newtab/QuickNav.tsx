@@ -188,7 +188,7 @@ export default function QuickNav({
   return (
     <div className='w-full'>
       <div
-        className='grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8'
+        className='grid grid-cols-3 gap-3 sm:grid-cols-5 md:grid-cols-8 lg:grid-cols-10'
         onDragOver={(e) => {
           if (draggingId) e.preventDefault()
         }}
