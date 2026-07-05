@@ -36,13 +36,15 @@ import {
   defaultPopupTab,
   enableCorsBypass,
   popupInitialTab,
-  getNetworkProxyProfile,
+  getNetworkProxyProfileForMode,
   isPopupShortcutTab,
   migrateLocalToSync,
+  networkActiveCustomProxyModeId,
+  networkCustomProxyModeProfiles,
+  networkGlobalProxyProfile,
   networkMode,
-  networkProxyBypassList,
   networkProxyManaged,
-  networkProxyProfile,
+  networkScenarioProxyProfile,
   networkRuleList,
   translateProvider,
   type NetworkMode,
@@ -734,7 +736,7 @@ async function applyNetworkMode(mode: NetworkMode): Promise<NetworkProxyStatus> 
 
   try {
     const [profile, ruleList] = await Promise.all([
-      getNetworkProxyProfile(),
+      getNetworkProxyProfileForMode(mode),
       networkRuleList.getValue(),
     ])
     await setChromeProxyConfig(buildNetworkProxyConfig(mode, profile, ruleList))
@@ -752,11 +754,8 @@ async function syncNetworkProxy(): Promise<NetworkProxyStatus> {
   }
 
   try {
-    const [mode, profile, ruleList] = await Promise.all([
-      networkMode.getValue(),
-      getNetworkProxyProfile(),
-      networkRuleList.getValue(),
-    ])
+    const [mode, ruleList] = await Promise.all([networkMode.getValue(), networkRuleList.getValue()])
+    const profile = await getNetworkProxyProfileForMode(mode)
     await setChromeProxyConfig(buildNetworkProxyConfig(mode, profile, ruleList))
     return getNetworkStatus()
   } catch (error) {
@@ -1171,8 +1170,10 @@ export default defineBackground(() => {
 
   enableCorsBypass.watch(syncCorsBypassRulesSafely)
   networkMode.watch(syncNetworkProxySafely)
-  networkProxyProfile.watch(syncNetworkProxySafely)
-  networkProxyBypassList.watch(syncNetworkProxySafely)
+  networkGlobalProxyProfile.watch(syncNetworkProxySafely)
+  networkScenarioProxyProfile.watch(syncNetworkProxySafely)
+  networkCustomProxyModeProfiles.watch(syncNetworkProxySafely)
+  networkActiveCustomProxyModeId.watch(syncNetworkProxySafely)
   networkRuleList.watch(syncNetworkProxySafely)
 
   // 工具栏图标随网络模式变色（SW 每次启动都重设，避免动态图标丢失）

@@ -315,6 +315,26 @@ body.quiet-page {
   border-color: rgba(99, 102, 241, 0.5);
   background: rgba(255, 255, 255, 0.92);
 }
+.popup-mode-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.55) rgba(226, 232, 240, 0.68);
+}
+.popup-mode-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.popup-mode-scroll::-webkit-scrollbar-track {
+  margin-inline: 4px;
+  border-radius: 999px;
+  background: rgba(226, 232, 240, 0.68);
+}
+.popup-mode-scroll::-webkit-scrollbar-thumb {
+  border: 2px solid rgba(226, 232, 240, 0.68);
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.58);
+}
+.popup-mode-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(37, 99, 235, 0.72);
+}
 .popup-switch {
   background: rgba(148, 163, 184, 0.46);
   box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.16);

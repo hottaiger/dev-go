@@ -37,13 +37,14 @@ export const enableCorsBypass = storage.defineItem<boolean>('local:enableCorsByp
 
 /* -------------------------------- 网络面板 -------------------------------- */
 
-/** 网络模式：直连 / 系统代理 / 代理模式 / 情境模式 */
+/** 网络模式：直连 / 系统代理 / 自动模式 / 代理模式 */
 export type NetworkMode = 'direct' | 'system' | 'global' | 'scenario'
+export type NetworkProxyProfileMode = Extract<NetworkMode, 'global' | 'scenario'>
 
-/** 情境模式代理协议 */
+/** 代理协议 */
 export type NetworkProxyScheme = 'http' | 'https' | 'socks4' | 'socks5'
 
-/** 情境模式代理配置 */
+/** 代理服务器配置 */
 export interface NetworkProxyProfile {
   scheme: NetworkProxyScheme
   host: string
@@ -51,10 +52,10 @@ export interface NetworkProxyProfile {
   bypassList: string[]
 }
 
-/** 情境模式规则列表格式 */
+/** 自动模式规则列表格式 */
 export type NetworkRuleListFormat = 'AutoProxy'
 
-/** 情境模式规则列表配置 */
+/** 自动模式规则列表配置 */
 export interface NetworkRuleListConfig {
   enabled: boolean
   format: NetworkRuleListFormat
@@ -63,6 +64,14 @@ export interface NetworkRuleListConfig {
   lastUpdate: string
   proxyRuleCount: number
   directRuleCount: number
+}
+
+/** 自定义代理模式：命名保存一套代理配置 */
+export interface NetworkCustomProxyModeProfile {
+  id: string
+  name: string
+  proxyProfile: NetworkProxyProfile
+  updatedAt: string
 }
 
 export const DEFAULT_NETWORK_PROXY_PROFILE: NetworkProxyProfile = {
@@ -92,23 +101,39 @@ export const networkMode = storage.defineItem<NetworkMode>('local:networkMode', 
   fallback: 'system',
 })
 
-/** 代理服务器配置（本机保存，避免不同设备的代理端口互相覆盖） */
-export const networkProxyProfile = storage.defineItem<NetworkProxyProfile>(
-  'local:networkProxyProfile',
-  {
-    fallback: DEFAULT_NETWORK_PROXY_PROFILE,
-  },
-)
-
-/** 手填绕过列表（跨设备同步） */
+/** 旧版手填绕过列表（仅作为迁移来源保留） */
 export const networkProxyBypassList = storage.defineItem<string[]>('sync:networkProxyBypassList', {
   fallback: DEFAULT_NETWORK_PROXY_PROFILE.bypassList,
 })
 
-/** 情境模式规则列表：启用后命中规则走代理，未命中直连 */
+/** 代理模式配置 */
+export const networkGlobalProxyProfile = storage.defineItem<NetworkProxyProfile>(
+  'local:networkGlobalProxyProfile',
+  { fallback: DEFAULT_NETWORK_PROXY_PROFILE },
+)
+
+/** 自动模式配置 */
+export const networkScenarioProxyProfile = storage.defineItem<NetworkProxyProfile>(
+  'local:networkScenarioProxyProfile',
+  { fallback: DEFAULT_NETWORK_PROXY_PROFILE },
+)
+
+/** 自动模式规则列表：启用后命中规则走代理，未命中直连 */
 export const networkRuleList = storage.defineItem<NetworkRuleListConfig>('local:networkRuleList', {
   fallback: DEFAULT_NETWORK_RULE_LIST,
 })
+
+/** 自定义代理模式列表（本机代理配置，不跨设备同步） */
+export const networkCustomProxyModeProfiles = storage.defineItem<NetworkCustomProxyModeProfile[]>(
+  'local:networkCustomProxyModeProfiles',
+  { fallback: [] },
+)
+
+/** 当前选中的自定义代理模式 id */
+export const networkActiveCustomProxyModeId = storage.defineItem<string>(
+  'local:networkActiveCustomProxyModeId',
+  { fallback: '' },
+)
 
 /** 切换网络模式后自动刷新当前页面（默认关闭） */
 export const enableReloadOnProxySwitch = storage.defineItem<boolean>(
@@ -279,8 +304,8 @@ export const defaultPopupTab = storage.defineItem<string>('sync:defaultPopupTab'
 
 /** 迁移完成标记，确保只搬一次（即便用户清空了 sync 数据也不会反复覆盖） */
 const syncMigrated = storage.defineItem<boolean>('sync:migratedFromLocal', { fallback: false })
-const networkProxyBypassListMigrated = storage.defineItem<boolean>(
-  'local:networkProxyBypassListMigratedToSync',
+const networkProxyProfilesMigrated = storage.defineItem<boolean>(
+  'local:networkProxyProfilesMigratedByMode',
   { fallback: false },
 )
 
@@ -316,51 +341,112 @@ function getBypassListFromProfile(value: unknown): string[] | null {
   return isNetworkProxyProfile(value) ? normalizeNetworkProxyBypassList(value.bypassList) : null
 }
 
-async function migrateNetworkProxyBypassListToSync(): Promise<void> {
-  if (await networkProxyBypassListMigrated.getValue()) return
-
-  const [localProfile, oldSyncProfile, syncBypassList] = await Promise.all([
-    storage.getItem<NetworkProxyProfile>('local:networkProxyProfile'),
-    storage.getItem<NetworkProxyProfile>('sync:networkProxyProfile'),
-    networkProxyBypassList.getValue(),
-  ])
-  const localBypassList = getBypassListFromProfile(localProfile)
-  const oldSyncBypassList = getBypassListFromProfile(oldSyncProfile)
-  const nextBypassList = localBypassList || oldSyncBypassList
-
-  if (
-    nextBypassList &&
-    !isDefaultNetworkProxyBypassList(nextBypassList) &&
-    isDefaultNetworkProxyBypassList(syncBypassList)
-  ) {
-    await networkProxyBypassList.setValue(nextBypassList)
-  }
-
-  await networkProxyBypassListMigrated.setValue(true)
-}
-
-export async function getNetworkProxyProfile(): Promise<NetworkProxyProfile> {
-  const [profile, bypassList] = await Promise.all([
-    networkProxyProfile.getValue(),
-    networkProxyBypassList.getValue(),
-  ])
-
+function normalizeStoredNetworkProxyProfile(profile: NetworkProxyProfile): NetworkProxyProfile {
   return {
     ...profile,
-    bypassList: normalizeNetworkProxyBypassList(bypassList),
+    host: profile.host.trim(),
+    port: Number.isFinite(profile.port) ? Math.trunc(profile.port) : 0,
+    bypassList: normalizeNetworkProxyBypassList(profile.bypassList),
   }
 }
 
-export async function setNetworkProxyProfile(profile: NetworkProxyProfile): Promise<void> {
-  const nextProfile = {
-    ...profile,
-    bypassList: normalizeNetworkProxyBypassList(profile.bypassList),
+function isDefaultNetworkProxyProfile(profile: NetworkProxyProfile): boolean {
+  const normalized = normalizeStoredNetworkProxyProfile(profile)
+  const defaultProfile = normalizeStoredNetworkProxyProfile(DEFAULT_NETWORK_PROXY_PROFILE)
+  return (
+    normalized.scheme === defaultProfile.scheme &&
+    normalized.host === defaultProfile.host &&
+    normalized.port === defaultProfile.port &&
+    normalized.bypassList.length === defaultProfile.bypassList.length &&
+    normalized.bypassList.every((item, index) => item === defaultProfile.bypassList[index])
+  )
+}
+
+async function migrateNetworkProxyProfilesByMode(): Promise<void> {
+  if (await networkProxyProfilesMigrated.getValue()) return
+
+  const [localProfile, oldSyncProfile, syncBypassList, globalProfile, scenarioProfile] =
+    await Promise.all([
+      storage.getItem<NetworkProxyProfile>('local:networkProxyProfile'),
+      storage.getItem<NetworkProxyProfile>('sync:networkProxyProfile'),
+      networkProxyBypassList.getValue(),
+      networkGlobalProxyProfile.getValue(),
+      networkScenarioProxyProfile.getValue(),
+    ])
+  const localBypassList = getBypassListFromProfile(localProfile)
+  const oldSyncBypassList = getBypassListFromProfile(oldSyncProfile)
+  const nextBypassList =
+    localBypassList || oldSyncBypassList || normalizeNetworkProxyBypassList(syncBypassList)
+  const sourceProfile = isNetworkProxyProfile(localProfile)
+    ? localProfile
+    : isNetworkProxyProfile(oldSyncProfile)
+    ? oldSyncProfile
+    : null
+
+  if (sourceProfile) {
+    const nextProfile = normalizeStoredNetworkProxyProfile({
+      ...sourceProfile,
+      bypassList: nextBypassList || sourceProfile.bypassList,
+    })
+    const tasks: Promise<void>[] = []
+    if (isDefaultNetworkProxyProfile(globalProfile)) {
+      tasks.push(networkGlobalProxyProfile.setValue(nextProfile))
+    }
+    if (isDefaultNetworkProxyProfile(scenarioProfile)) {
+      tasks.push(networkScenarioProxyProfile.setValue(nextProfile))
+    }
+    await Promise.all(tasks)
+  } else if (nextBypassList && !isDefaultNetworkProxyBypassList(nextBypassList)) {
+    const nextProfile = normalizeStoredNetworkProxyProfile({
+      ...DEFAULT_NETWORK_PROXY_PROFILE,
+      bypassList: nextBypassList,
+    })
+    const tasks: Promise<void>[] = []
+    if (isDefaultNetworkProxyProfile(globalProfile)) {
+      tasks.push(networkGlobalProxyProfile.setValue(nextProfile))
+    }
+    if (isDefaultNetworkProxyProfile(scenarioProfile)) {
+      tasks.push(networkScenarioProxyProfile.setValue(nextProfile))
+    }
+    await Promise.all(tasks)
   }
 
-  await Promise.all([
-    networkProxyProfile.setValue(nextProfile),
-    networkProxyBypassList.setValue(nextProfile.bypassList),
-  ])
+  await networkProxyProfilesMigrated.setValue(true)
+}
+
+function getNetworkProxyProfileStorage(mode: NetworkProxyProfileMode) {
+  return mode === 'scenario' ? networkScenarioProxyProfile : networkGlobalProxyProfile
+}
+
+export async function getNetworkProxyProfile(
+  mode: NetworkProxyProfileMode = 'global',
+): Promise<NetworkProxyProfile> {
+  return normalizeStoredNetworkProxyProfile(await getNetworkProxyProfileStorage(mode).getValue())
+}
+
+export async function getNetworkProxyProfileForMode(
+  mode: NetworkMode,
+): Promise<NetworkProxyProfile> {
+  if (mode === 'scenario') return getNetworkProxyProfile('scenario')
+
+  if (mode === 'global') {
+    const [profiles, activeId] = await Promise.all([
+      networkCustomProxyModeProfiles.getValue(),
+      networkActiveCustomProxyModeId.getValue(),
+    ])
+    const customProfile = profiles.find((item) => item.id === activeId)?.proxyProfile
+    if (customProfile) return normalizeStoredNetworkProxyProfile(customProfile)
+    return getNetworkProxyProfile('global')
+  }
+
+  return normalizeStoredNetworkProxyProfile(DEFAULT_NETWORK_PROXY_PROFILE)
+}
+
+export async function setNetworkProxyProfile(
+  profile: NetworkProxyProfile,
+  mode: NetworkProxyProfileMode = 'global',
+): Promise<void> {
+  await getNetworkProxyProfileStorage(mode).setValue(normalizeStoredNetworkProxyProfile(profile))
 }
 
 /**
@@ -371,7 +457,7 @@ export async function setNetworkProxyProfile(profile: NetworkProxyProfile): Prom
  * 应在各页面渲染前 await（见各 entrypoint 的 main.tsx）。
  */
 export async function migrateLocalToSync(): Promise<void> {
-  await migrateNetworkProxyBypassListToSync()
+  await migrateNetworkProxyProfilesByMode()
 
   if (await syncMigrated.getValue()) return
 

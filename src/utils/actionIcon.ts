@@ -16,7 +16,7 @@ const CIRCLE_R = 83 / 395
 const ICON_SIZES = [16, 32, 48, 128] as const
 
 /**
- * 各模式的圆颜色（灰/黑/蓝/橙）：灰=直连、黑=系统默认、蓝=代理模式、橙=情境模式。
+ * 各模式的圆颜色（灰/黑/橙/蓝）：灰=直连、黑=系统默认、橙=自动模式、蓝=代理模式。
  */
 const MODE_COLORS: Record<NetworkMode, string> = {
   direct: '#9CA3AF',

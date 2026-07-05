@@ -9,10 +9,13 @@ import {
   enableGithubEnhance,
   enableReloadOnProxySwitch,
   enableSelectionTranslate,
-  getNetworkProxyProfile,
   lookupProvider,
+  networkActiveCustomProxyModeId,
+  networkCustomProxyModeProfiles,
+  networkGlobalProxyProfile,
   networkMode,
   networkRuleList,
+  networkScenarioProxyProfile,
   newtabShaderEffect,
   newtabShaderMode,
   quickNavCategoryLabels,
@@ -52,12 +55,11 @@ const BACKUP_ITEMS: Record<string, BackupItem> = {
   enableGithubEnhance,
   enableCorsBypass,
   networkMode,
-  networkProxyProfile: {
-    getValue: getNetworkProxyProfile,
-    setValue: (value) => setNetworkProxyProfile(value as NetworkProxyProfile),
-    fallback: DEFAULT_NETWORK_PROXY_PROFILE,
-  },
+  networkGlobalProxyProfile,
+  networkScenarioProxyProfile,
   networkRuleList,
+  networkCustomProxyModeProfiles,
+  networkActiveCustomProxyModeId,
   enableReloadOnProxySwitch,
   searchEngine,
   quickNavItems,
@@ -125,6 +127,21 @@ export async function restoreBackup(
     }
     tasks.push(item.setValue(value as never))
   })
+
+  if ('networkProxyProfile' in data) {
+    const hasGlobalProfile = 'networkGlobalProxyProfile' in data
+    const hasScenarioProfile = 'networkScenarioProxyProfile' in data
+    const value = data.networkProxyProfile
+
+    if (!matchesShape(value, DEFAULT_NETWORK_PROXY_PROFILE)) {
+      skipped.push('networkProxyProfile')
+    } else {
+      const profile = value as NetworkProxyProfile
+      if (!hasGlobalProfile) tasks.push(setNetworkProxyProfile(profile, 'global'))
+      if (!hasScenarioProfile) tasks.push(setNetworkProxyProfile(profile, 'scenario'))
+    }
+  }
+
   await Promise.all(tasks)
   // 旧版备份的导航项可能没有 category（恢复后全部落在「常用」），
   // 重置种子标记让 newtab 下次打开时给空分类补默认站点。
