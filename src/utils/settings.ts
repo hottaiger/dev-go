@@ -292,6 +292,11 @@ export const popupInitialTab = storage.defineItem<PopupShortcutTab | ''>('local:
   fallback: '',
 })
 
+/** popup 面板上次选中的功能页（本机持久化，用于下次从工具栏重新打开时恢复）。 */
+export const popupLastActiveTab = storage.defineItem<PopupShortcutTab>('local:popupLastActiveTab', {
+  fallback: 'translate',
+})
+
 /**
  * 点击工具栏图标或 Alt+1 打开 popup 时默认定位的 Tab（在「功能」页可配置，默认翻译）。
  * 跨设备同步：换设备后默认 Tab 偏好保持一致。

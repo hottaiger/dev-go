@@ -1,0 +1,22 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 8
+name: restore-last-panel-tab
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: implicit
+approved_contract_hash: a2bed7a074ebe28835f8b6735345a21314f41efd613ad57e5456e3803e90b4d0
+spec_changes:
+  - capability: popup-last-active-tab
+    operation: create
+    source: specs/popup-last-active-tab/spec.md
+    base_hash: null
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/524f76e1995a2df92913218da8f47861215d5337e44351ceeaeb18a0f43e99fc.json
+verification_evidence: runtime/evidence/verifications/f3dd911852eb67c59d6cb211a2719ff34afb0e2964e0abea252ffd59085cac35.json
+partial_allowance: null
+archived: true
+created_at: 2026-07-23
+run_id: 592766a4-5fa1-4b99-b308-b98107f94589

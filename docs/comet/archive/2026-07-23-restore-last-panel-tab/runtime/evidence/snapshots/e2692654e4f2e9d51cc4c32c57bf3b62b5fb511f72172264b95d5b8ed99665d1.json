@@ -1,0 +1,582 @@
+{
+  "schema": "comet.native.content-snapshot-projection.v1",
+  "origin": "change-created",
+  "capture": {
+    "provider": "git"
+  },
+  "complete": true,
+  "limits": {
+    "maxFiles": 10000,
+    "maxFileBytes": 5242880,
+    "maxTotalBytes": 67108864,
+    "maxManifestBytes": 1048576
+  },
+  "entries": [
+    {
+      "path": ".cz-config.cjs",
+      "hash": "3e4fcea10bef02b26869920d9946a427461b07a5c2b67fb77b8e263fe84c270c",
+      "size": 1981,
+      "type": "file"
+    },
+    {
+      "path": ".github/workflows/submit.yml",
+      "hash": "a84e64db9350d315f33341d850821442a832cd1f11b6e1b64ab441675af0b70c",
+      "size": 672,
+      "type": "file"
+    },
+    {
+      "path": ".gitignore",
+      "hash": "c921c920e2834fbb149e022077c23656ee0d6169b531d997cb3e61f740307d24",
+      "size": 639,
+      "type": "file"
+    },
+    {
+      "path": ".husky/commit-msg",
+      "hash": "2fdadc5ee6d4b7a44823c61b714e180b15688fd7520b9946da976fdbc5d0eb01",
+      "size": 80,
+      "type": "file"
+    },
+    {
+      "path": ".husky/pre-commit",
+      "hash": "dc57ce00a4508c379cd813aa3b4422937cfd51b87cd4486777b777f74b6b4f32",
+      "size": 82,
+      "type": "file"
+    },
+    {
+      "path": ".prettierignore",
+      "hash": "f69648bd7bd4faae1e856e3f1db1a15b40df251baa68f3079fe0b3e957bde60e",
+      "size": 185,
+      "type": "file"
+    },
+    {
+      "path": ".prettierrc.cjs",
+      "hash": "f4fe962b1dc3d72b827287d32f8f6d77ea9c628bd70305ef80ab1fc0ea4d5aee",
+      "size": 1302,
+      "type": "file"
+    },
+    {
+      "path": "AGENTS.md",
+      "hash": "63f05263998737acef3a59b8a1b8d005c5738ac283fea47a21870be8ccc11359",
+      "size": 2169,
+      "type": "file"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "hash": "a2a37ed4dc667426428b7633bd17c6dee1683f7e1cf343d43015d52fad9be9bb",
+      "size": 3237,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "hash": "9e3cdf62a735589240cb031a480e7cf55083129597ea0fb38ba668a1f3262ef4",
+      "size": 6267,
+      "type": "file"
+    },
+    {
+      "path": "README.md",
+      "hash": "afd456095381f0d6d7c68de97293cf8a68631c7f24c51a830a2c6f7a7e76ca2e",
+      "size": 3061,
+      "type": "file"
+    },
+    {
+      "path": "RECORD.md",
+      "hash": "c212312c644a0df4f0d547bc976fab04bf3943fdae3f3c8ca18538cb266bea61",
+      "size": 13592,
+      "type": "file"
+    },
+    {
+      "path": "__test__.html",
+      "hash": "949fc620cc5c98f7adca30ff026fd65dc43192f9e9e60834a29a79b541d7240c",
+      "size": 3433,
+      "type": "file"
+    },
+    {
+      "path": "commitlint.config.cjs",
+      "hash": "3afe24e37063db60983aa31006214cf908d4d296cd8204266b14ebc0c58d8ac8",
+      "size": 37,
+      "type": "file"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "hash": "6c493e6f308d6ee77fcbf6d4d8a254d5fd6dd082cc85295668ef0e15a2a7ff64",
+      "size": 3706,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "hash": "480c500b01e9df048338571081060c2f9890230349a7b17915e7fcd7c72c39be",
+      "size": 2527,
+      "type": "file"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "hash": "626160a60c9b6c660d5502f5754b52076852123c37c466c785a00576a2d478f0",
+      "size": 291489,
+      "type": "file"
+    },
+    {
+      "path": "src/api/lookup.ts",
+      "hash": "bfa84a59d60fee48f044ec02a85650eb7eaf585becc34f46e424394e8a6f73b5",
+      "size": 1803,
+      "type": "file"
+    },
+    {
+      "path": "src/api/microsoft.ts",
+      "hash": "6fbce7d952e60c627eaed349a8130b23ddc94ebd738203032550b4e536ca044d",
+      "size": 7195,
+      "type": "file"
+    },
+    {
+      "path": "src/api/translator.ts",
+      "hash": "50b044d8fc0a93476153505f23449e3e199d6aa5ebc6a9737fd34b8aac387fd2",
+      "size": 3915,
+      "type": "file"
+    },
+    {
+      "path": "src/assets/copy.svg",
+      "hash": "54e153864e3ca54c6e0630a6df74e2860727f50ff2380616e866c6e905067cc8",
+      "size": 701,
+      "type": "file"
+    },
+    {
+      "path": "src/assets/global.css",
+      "hash": "1ba351c6edefbab1a12a32420274fcf4db9426b3fcf3ec3fc13998edbd7e2841",
+      "size": 27068,
+      "type": "file"
+    },
+    {
+      "path": "src/assets/icon.png",
+      "hash": "f203b7c4c732d17998a077e25e3b67bda50cbf2a894d5e4d8df419d8524feaf0",
+      "size": 16793,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/background.ts",
+      "hash": "3d40ce0f90aafe0ddca3d05ac0662518ae0864aa576949af86920f7e3e218d59",
+      "size": 33302,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/cors-bridge.content.ts",
+      "hash": "cfa0849b6f9929bb27750ed77331ad2d840c7194323f850d9cb0d09e4859c3ff",
+      "size": 3888,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/cors-proxy.ts",
+      "hash": "213a94e9ff5ed3909cfe3bd796b807b0d6bcc60a75114ce68252a460d1bb690d",
+      "size": 12247,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/github.content.tsx",
+      "hash": "4201bde8ac16c9fa64d3db072c1b0d5ada9e8d833ad6a8f957a3b0debf3aee48",
+      "size": 1491,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/link-go.content.ts",
+      "hash": "cfc2430f30e92355c2afe76515e9f9505a5267a109d8ac9b73661767a07b6cb7",
+      "size": 953,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/newtab/App.tsx",
+      "hash": "7c365ddf8a4d07b1958d4baaa6666f955cda3b04b34c2fc95d23ffddad125d81",
+      "size": 110,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/newtab/index.html",
+      "hash": "1f9d38cb153c7d7ad95fb8314dfba78d25fd329fe850e687cec2958218720d99",
+      "size": 319,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/newtab/main.tsx",
+      "hash": "100056d41f5d3c8afe9b53e4a315ef1382eeb0891f3eb6b370dc78dc641b042d",
+      "size": 506,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/options/App.tsx",
+      "hash": "7cf896ee7308c0a96c9a820ac5215f1ea5d15d83178f42f08cc4f27ae74df7bf",
+      "size": 653,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/options/index.html",
+      "hash": "0844430a7e08971e6a5915fd9f4b02d29a1932b21263076bcfdd407b258043dc",
+      "size": 299,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/options/main.tsx",
+      "hash": "d6d324c6f0eff95e06950bfa2ee871a5b4ebdd825a2c976d20cf779a156ccc38",
+      "size": 242,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/popup/App.tsx",
+      "hash": "06a11193348c5e929b7c0ee4dc25e406510f9f6ea87f03ac4b53e355cc5b8d33",
+      "size": 5722,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/popup/index.html",
+      "hash": "b4c7038c4cc751dfd0115cbf86e2b21d58a4e707985979aba60a29512a436af9",
+      "size": 292,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/popup/main.tsx",
+      "hash": "22cfdc013be859cdec05ed0e8bc3a451def5005d46b7ea8e3e7a5a62bce3b677",
+      "size": 560,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/selection.content.tsx",
+      "hash": "0117a5606b67d63d187d6a680944df7b1b9688e54032210f4a349eaac585ba25",
+      "size": 1461,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/translate.content.ts",
+      "hash": "0728030b6e3ec5919d84e20fccd6677dc2c503ab8c6cda435d0a7fdd7b4337a0",
+      "size": 31391,
+      "type": "file"
+    },
+    {
+      "path": "src/entrypoints/unlock.content.ts",
+      "hash": "e8415a6f54fb76c9535741122ed7bee5633baf17225c68425599d15c91735ed7",
+      "size": 1116,
+      "type": "file"
+    },
+    {
+      "path": "src/features/github/GithubApp.tsx",
+      "hash": "db6449eed11546d9ab00867c1a7e189081118bd317814cab6c4d544142d520d3",
+      "size": 2263,
+      "type": "file"
+    },
+    {
+      "path": "src/features/github/components/FloatButton.tsx",
+      "hash": "b4c76c1f6d6c32dcc8b340950b00388a316b7dfe2c7e6cece36e4448daac7b9b",
+      "size": 1842,
+      "type": "file"
+    },
+    {
+      "path": "src/features/github/components/icons.tsx",
+      "hash": "da61f335b8cda0bc1d61ae9ad56669a0804a881f32f56616bcffb138c51d298c",
+      "size": 1046,
+      "type": "file"
+    },
+    {
+      "path": "src/features/github/style.css",
+      "hash": "11b8e69e89a31e87e25ec43c92ffcddd0cb794db757d6167ae31ee058f9ea425",
+      "size": 23,
+      "type": "file"
+    },
+    {
+      "path": "src/features/github/useScrollToTop.ts",
+      "hash": "c113b56d265a7f7a900d1b81155d6110cbc7bfbd4dbb9f0d3c93161ac9336a6d",
+      "size": 743,
+      "type": "file"
+    },
+    {
+      "path": "src/features/github/utils.ts",
+      "hash": "afbab9c1efc4f8a835db6c7f7def367d04936aa0aae7df3fc372af9ea7d6d6c0",
+      "size": 1827,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/CategoryTabs.tsx",
+      "hash": "488041c60f2496a1baf01496b37cd941805b031de7cfc3943e7f82d8236c6ad5",
+      "size": 3568,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/NewTabApp.tsx",
+      "hash": "7eed9e51ccd95ac75a239711ddaab26ba545e81101e916db18640248b2ad460a",
+      "size": 24893,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/PinnedNav.tsx",
+      "hash": "5c029d3bb21e6da22241a6e1a3ba5eb44a45050b399f1f937300adb1ffa7dd13",
+      "size": 3074,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/QuickNav.tsx",
+      "hash": "440205c79c5cc5ce84a38bab56873726e1b7c5c102888b9bb50142cbd6409a67",
+      "size": 14957,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/QuietBackground.tsx",
+      "hash": "aa51e40f486be4f4c2449e4e2800de3409a57c6d71cfd3cb6d553f0baa5e1ee9",
+      "size": 26996,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/SearchBar.tsx",
+      "hash": "9259f310f46ee9674f29ef4d1672f2635f52efb2f405daaaa355eaaead2ffa50",
+      "size": 10184,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/SiteIcon.tsx",
+      "hash": "9f9b0fb1368ad5c1d0ba101e382c87395d93b82f3868d3b93d948df551f5484a",
+      "size": 1533,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/TodoBoard.tsx",
+      "hash": "5a5a9a42af21e650ad58edce23ade4fab5faccb2520dd9a6e5bedbb28f818bb7",
+      "size": 28669,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/categories.ts",
+      "hash": "faa88c1f646a0f6c6304a0985ed177b6b0317600146f3efb321f42e5ae627cdb",
+      "size": 1963,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/config.ts",
+      "hash": "0951d19ab083bb09d04ab082e4cbb64c034a61b72461e951db1a90c7e433e13d",
+      "size": 4651,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/engines.ts",
+      "hash": "6e4af9157eaaf86ab4bd33757d7ceb10502d766f459fdd93b458728097247f8d",
+      "size": 16184,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/faviconCache.ts",
+      "hash": "6aeef89bea87970644ce3d084479cd26997df41f7794327f5fe79f209833148d",
+      "size": 8519,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/navUrl.ts",
+      "hash": "3d15795cb9b923658877d04d3e8ded6cdc697e34baf950107df10af351b0742c",
+      "size": 1045,
+      "type": "file"
+    },
+    {
+      "path": "src/features/newtab/useSuggestions.ts",
+      "hash": "893613769dee15a4a26194565071919a7e660d0cc9d147be6e7f2dd3f4ec3254",
+      "size": 2246,
+      "type": "file"
+    },
+    {
+      "path": "src/features/popup/FunctionPage.tsx",
+      "hash": "c5574b650e67f488e816a3d4a0722e0de195a31cd012d9f0a0aa58f938aa94eb",
+      "size": 7281,
+      "type": "file"
+    },
+    {
+      "path": "src/features/popup/NetworkPage.tsx",
+      "hash": "6eaff961b5bf197d351fbd61cc295b6bf10a1b122634e8b0e8bb998aaddda757",
+      "size": 47077,
+      "type": "file"
+    },
+    {
+      "path": "src/features/popup/TodoPage.tsx",
+      "hash": "0fec9e94535f9baa77ead5f1ff6eb304e02cc679f938e97dc7c4eb88cdd97c28",
+      "size": 15380,
+      "type": "file"
+    },
+    {
+      "path": "src/features/popup/ToolsPage.tsx",
+      "hash": "3057659b443ea717179fd9a0984d1a327466c293da14e86549badc103fa54a75",
+      "size": 20690,
+      "type": "file"
+    },
+    {
+      "path": "src/features/popup/TranslatePage.tsx",
+      "hash": "a721820ccbae36c046734fca22bae36d6e0f4549b5851c6fd48be3fccb80250e",
+      "size": 6010,
+      "type": "file"
+    },
+    {
+      "path": "src/features/popup/pages.ts",
+      "hash": "3057c847d642b222834e56cda9670139df19323138f33d0d560de43bc17d9b31",
+      "size": 481,
+      "type": "file"
+    },
+    {
+      "path": "src/features/selection/SelectionApp.tsx",
+      "hash": "8e12464baf321ecef5cd36d7d257db099b996a4c3c943f3fbcd638c1fc313d90",
+      "size": 8866,
+      "type": "file"
+    },
+    {
+      "path": "src/features/selection/style.css",
+      "hash": "11b8e69e89a31e87e25ec43c92ffcddd0cb794db757d6167ae31ee058f9ea425",
+      "size": 23,
+      "type": "file"
+    },
+    {
+      "path": "src/features/todo/todo.ts",
+      "hash": "bf5dab406eddd3b62ab299209d39c55b5447c2dae2ecfd1c638a02021dcea09d",
+      "size": 4720,
+      "type": "file"
+    },
+    {
+      "path": "src/features/todo/useTodos.ts",
+      "hash": "05446338bea59d27941c476f088eb031e165405bc0cfb3ff07cb178522aedd64",
+      "size": 2878,
+      "type": "file"
+    },
+    {
+      "path": "src/types/assets.d.ts",
+      "hash": "f3efd763d9a7bbae1d56fc923eabded10c03d3f77f388d22d1e13503e9f9993f",
+      "size": 119,
+      "type": "file"
+    },
+    {
+      "path": "src/types/dev-backup.d.ts",
+      "hash": "5780918d518f51ea8fd4972649e5cceb90903f402eb3d0f9adcfa131eb7c3817",
+      "size": 47,
+      "type": "file"
+    },
+    {
+      "path": "src/types/dict.ts",
+      "hash": "9b819579eafbe9ef31b2cf46681812d107ec7c4222d5a442702a14f39878f391",
+      "size": 294,
+      "type": "file"
+    },
+    {
+      "path": "src/types/word.ts",
+      "hash": "dc925dcc3099c602224b7a29846c9034b0e16d59611662441326d1b10ec57196",
+      "size": 513,
+      "type": "file"
+    },
+    {
+      "path": "src/ui/Button.tsx",
+      "hash": "a1ea03acf3ff76839322e96c5d1d7db6c759b6d0509fcafae702563c3ed569a9",
+      "size": 1872,
+      "type": "file"
+    },
+    {
+      "path": "src/ui/Select.tsx",
+      "hash": "8bdb63d09683100982eaff840c094b0a91996c86c13f0e5700a4de734a5d80d1",
+      "size": 3998,
+      "type": "file"
+    },
+    {
+      "path": "src/ui/Switch.tsx",
+      "hash": "98fe9d12878efd83e8e163916bc2ef49569e0d0f597ff6f14b178f53be0b1b96",
+      "size": 823,
+      "type": "file"
+    },
+    {
+      "path": "src/ui/Tabs.tsx",
+      "hash": "21559a043d6a5352e107fe2ee7ab99b03a4c5bd1603351b5c377a9b69d4573f9",
+      "size": 746,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/actionIcon.ts",
+      "hash": "3c7f0c0ddf48924377e4fab6fd6c3a9fec404afedd570c58713a8d7ca8804471",
+      "size": 2449,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/backup.ts",
+      "hash": "1c2d379556bc9eb8bed3f8d117b20e734390e249bda69c858b0b317feb3cf457",
+      "size": 4598,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/constants.ts",
+      "hash": "3a690615ebac6fc9609f48f4f821ef4837fec9390b2b2824c9fd79dc46c9a3d0",
+      "size": 346,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/content-settings.ts",
+      "hash": "a1871bb3cc29c132f1520470ace8ac57e4606eaa7593a8b8eb6fdacf340c8e31",
+      "size": 1514,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/dev-backup.ts",
+      "hash": "85df5f9e9f6ab7c411a64642adce790d6f85436c09c3f2aa160179688c7cb891",
+      "size": 1066,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/ime.ts",
+      "hash": "4365bbbfa66d2010e93c78612c811bd22060d49df454f86f1df821bbd69e5543",
+      "size": 442,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/lang.ts",
+      "hash": "b59513b0502512b725c81c89ed48b894a6d60a2d233a2f3c38d17499bea761f4",
+      "size": 549,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/media.ts",
+      "hash": "0a729efcde08958b5d2e6d7d7678ba904925f094b4712b2c2fc97a3d2a0a70cf",
+      "size": 8455,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/messaging.ts",
+      "hash": "e52389af36b0fe57c02d91cafdc98cef41b1b4563953ea4c1aedc49e247bcbea",
+      "size": 4831,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/network.ts",
+      "hash": "e63a6ec916710e74bbdd2e615338868d2c4ecee17b2f6e85ae00632afc8c9b06",
+      "size": 12329,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/no-translate.ts",
+      "hash": "8b6d8bbf7bd546be35ea1f821e58135d1910e59b982ec8421a97bd525b0af226",
+      "size": 4612,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/settings.ts",
+      "hash": "6c0ba5b78e41c9b7070af38517ab7a227ffc241a83c9bd042ec24fd44dbacfbf",
+      "size": 17349,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/shortcut.ts",
+      "hash": "a62732fbbecc79e993f55d868ea189770f432269678b034946edd9cc1bda1abd",
+      "size": 813,
+      "type": "file"
+    },
+    {
+      "path": "src/utils/theme.ts",
+      "hash": "da549a55a1f041cd266c2f758cd03f7ec718417959c0e168a014100069a88ba7",
+      "size": 2051,
+      "type": "file"
+    },
+    {
+      "path": "tsconfig.json",
+      "hash": "0057ea4b86b38fd6c97bec29c74e026c9ece55fb4f100cff5cddd66473fbf96d",
+      "size": 91,
+      "type": "file"
+    },
+    {
+      "path": "wxt.config.ts",
+      "hash": "0b004610f06315259fb7e255ee990f72bf36f11a5f2008bc9ea1081c86e03240",
+      "size": 3431,
+      "type": "file"
+    }
+  ],
+  "omitted": [],
+  "omittedCount": 0
+}

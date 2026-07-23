@@ -1,0 +1,108 @@
+{
+  "schema": "comet.native.verification-evidence.v1",
+  "change": "restore-last-panel-tab",
+  "sourceRevision": 6,
+  "result": "pass",
+  "freshness": "complete",
+  "contractHash": "a2bed7a074ebe28835f8b6735345a21314f41efd613ad57e5456e3803e90b4d0",
+  "acceptanceCriteriaHash": "98994d6d46662a1154247038fd89f2eff1da31bac2ff7f12ae8db2c3ef3c44d9",
+  "implementationScopeRef": "runtime/evidence/scopes/524f76e1995a2df92913218da8f47861215d5337e44351ceeaeb18a0f43e99fc.json",
+  "implementationScopeHash": "524f76e1995a2df92913218da8f47861215d5337e44351ceeaeb18a0f43e99fc",
+  "reportRef": "verification.md",
+  "reportHash": "7a84ed4f96095e3738f01d60a9247191f27a1b4c69e7bc7f5e546b221b05b6ee",
+  "acceptanceTrace": {
+    "schema": "comet.native.acceptance-trace.v1",
+    "nativeRootRef": "docs/comet",
+    "criteriaHash": "98994d6d46662a1154247038fd89f2eff1da31bac2ff7f12ae8db2c3ef3c44d9",
+    "total": 8,
+    "evidenced": 8,
+    "skipped": 0,
+    "entries": [
+      {
+        "acceptanceId": "acceptance-111ae32e6e10cb7152380ccaec51e0022f9656e6ed1478d4dc90435e12cfcd10",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "src/entrypoints/popup/App.tsx",
+          "src/utils/settings.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-4f65ce5f02a490f9e1a8b917e4ebc5deb44448f8642d9fa1653b358142111e8c",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "src/entrypoints/popup/App.tsx",
+          "src/utils/settings.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-64ae4572fbdf71d114ce10663cb2b040ca8c8b507b377fe591f48c6be48e817b",
+        "kind": "spec-scenario",
+        "source": "specs/popup-last-active-tab/spec.md",
+        "evidenceRefs": [
+          "src/entrypoints/popup/App.tsx",
+          "src/utils/settings.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-88607ccca44151975f73d2a801a2b16bd57a6827745e249c8e787941e1ab3761",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "src/entrypoints/popup/App.tsx",
+          "src/utils/settings.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-a366d254911ef98fca5ae578cd165096319ec52c6edb8463d364d74491cce48f",
+        "kind": "spec-scenario",
+        "source": "specs/popup-last-active-tab/spec.md",
+        "evidenceRefs": [
+          "src/entrypoints/popup/App.tsx",
+          "src/utils/settings.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-ac93992113b42a76b91baea349d47b1b0a83d82ac482a9ac7067c70a512342c6",
+        "kind": "spec-scenario",
+        "source": "specs/popup-last-active-tab/spec.md",
+        "evidenceRefs": [
+          "src/entrypoints/popup/App.tsx",
+          "src/utils/settings.ts"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-c0741d2f12f408f8fe5d2bd7be4ae6c78028b5d7afa03861336f76376949e8d3",
+        "kind": "brief-example",
+        "source": "brief.md",
+        "evidenceRefs": [
+          "src/entrypoints/popup/App.tsx"
+        ],
+        "skippedReason": null
+      },
+      {
+        "acceptanceId": "acceptance-dfe7558be2ae14765f2d2015ade68a9791f68ffa989985a0b5f965026c80123a",
+        "kind": "spec-scenario",
+        "source": "specs/popup-last-active-tab/spec.md",
+        "evidenceRefs": [
+          "src/entrypoints/popup/App.tsx",
+          "src/utils/settings.ts"
+        ],
+        "skippedReason": null
+      }
+    ],
+    "traceHash": "9de65a9194dd59d3acdfa99fde54820d3dc067c9e7787543a0b069a899a9ec15"
+  },
+  "partialAllowanceRef": null,
+  "partialAllowanceHash": null,
+  "receiptRef": "runtime/evidence/check-receipts/111dc8522f339ae0c0b0c6cdbf1c16798ded3eae631719f9acf575d0a30b9a10.json",
+  "createdAt": "2026-07-23T15:00:32.757Z",
+  "envelopeHash": "f3dd911852eb67c59d6cb211a2719ff34afb0e2964e0abea252ffd59085cac35"
+}
