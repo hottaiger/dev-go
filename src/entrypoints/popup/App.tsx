@@ -11,6 +11,7 @@ import Tabs from '@/ui/Tabs'
 import {
   defaultPopupTab,
   isPopupShortcutTab,
+  popupLastActiveTab,
   popupInitialTab,
   type PopupShortcutTab,
 } from '@/utils/settings'
@@ -37,42 +38,50 @@ export default function App() {
     activeRef.current = active
   }, [active])
 
-  const applyShortcutTab = useCallback((tab: PopupShortcutTab) => {
-    popupInitialTab.setValue('')
-
-    if (activeRef.current === tab) {
-      window.close()
-      return
-    }
-
+  const selectTab = useCallback((tab: PopupShortcutTab) => {
     activeRef.current = tab
     setActive(tab)
+    void popupLastActiveTab.setValue(tab)
   }, [])
 
-  // 打开面板时定位 Tab：优先一次性信号（Alt+1..4 等命令写入），否则用「功能」页配置的默认 Tab。
-  useEffect(() => {
-    Promise.all([popupInitialTab.getValue(), defaultPopupTab.getValue()]).then(
-      ([tab, fallback]) => {
-        const defaultTab = isPopupShortcutTab(fallback) ? fallback : DEFAULT_POPUP_TAB
-        setDefaultShortcutTab(defaultTab)
+  const applyShortcutTab = useCallback(
+    (tab: PopupShortcutTab) => {
+      popupInitialTab.setValue('')
 
-        if (tab && isPopupShortcutTab(tab)) {
-          activeRef.current = tab
-          setActive(tab)
-          popupInitialTab.setValue('')
-          return
-        }
-        if (tab) popupInitialTab.setValue('')
-        activeRef.current = defaultTab
-        setActive(defaultTab)
-      },
-    )
+      if (activeRef.current === tab) {
+        window.close()
+        return
+      }
+
+      selectTab(tab)
+    },
+    [selectTab],
+  )
+
+  // 打开面板时定位 Tab：优先一次性快捷键指令，其次恢复上次选中项，最后使用默认 Tab。
+  useEffect(() => {
+    Promise.all([
+      popupInitialTab.getValue(),
+      popupLastActiveTab.getValue(),
+      defaultPopupTab.getValue(),
+    ]).then(([tab, lastActiveTab, fallback]) => {
+      const defaultTab = isPopupShortcutTab(fallback) ? fallback : DEFAULT_POPUP_TAB
+      setDefaultShortcutTab(defaultTab)
+
+      if (tab && isPopupShortcutTab(tab)) {
+        selectTab(tab)
+        popupInitialTab.setValue('')
+        return
+      }
+      if (tab) popupInitialTab.setValue('')
+      selectTab(isPopupShortcutTab(lastActiveTab) ? lastActiveTab : defaultTab)
+    })
 
     // 读取实际注册的命令快捷键（用户在 chrome://extensions/shortcuts 改动后会同步）
     browser.commands?.getAll().then((cmds) => {
       setShortcuts(Object.fromEntries(cmds.map((c) => [c.name, c.shortcut || ''])))
     })
-  }, [])
+  }, [selectTab])
 
   useEffect(() => {
     const unwatch = defaultPopupTab.watch((tab) => {
@@ -104,6 +113,10 @@ export default function App() {
     active === defaultShortcutTab ? shortcuts[DEFAULT_POPUP_COMMAND] || '' : ''
   const activeShortcut = shortcuts[TAB_COMMANDS[active]] || defaultShortcut
 
+  const handleTabChange = (tab: string) => {
+    if (isPopupShortcutTab(tab)) selectTab(tab)
+  }
+
   return (
     <div className='popup-shell relative flex w-[500px] flex-col overflow-hidden text-slate-800'>
       <span aria-hidden='true' className='popup-ambient popup-ambient-a' />
@@ -117,7 +130,7 @@ export default function App() {
           </span>
           <span className='text-sm font-semibold tracking-tight text-slate-800'>{SHIP_NAME}</span>
         </div>
-        <Tabs value={active} tabs={POPUP_PAGES} onChange={setActive} />
+        <Tabs value={active} tabs={POPUP_PAGES} onChange={handleTabChange} />
       </header>
 
       {/* 内容区 */}
