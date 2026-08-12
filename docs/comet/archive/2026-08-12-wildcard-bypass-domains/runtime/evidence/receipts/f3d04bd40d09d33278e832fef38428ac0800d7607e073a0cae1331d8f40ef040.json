@@ -1,0 +1,59 @@
+{
+  "schema": "comet.native.verification-receipt.v3",
+  "kind": "automated-check",
+  "role": "acceptance-evidence",
+  "status": "passed",
+  "bindings": {
+    "change": "wildcard-bypass-domains",
+    "sourceRevision": 3,
+    "contractHash": "5d439c2cbe1dbe3a60e44fd8aea543133993481a85e387e04c760f077b469354",
+    "scopeHash": "4a37b3aac457eef4e29d2ba6a1a37ad270d6984ee50db8b05e463b9522d6c271",
+    "snapshotHash": "3a0295b5e18ae99958753709266a522dca97f06e3e78852bedc557bf45f84bbc",
+    "artifactHash": "f5f6ce3987379a7544e3f9397b22d5d0ec08d0cfea83f1dfd64d9d392c1fb1b9"
+  },
+  "acceptanceIds": [
+    "acceptance-2c1fb45e905a494cfe2842ec5b3326e91f4669ad86fcec7bc39680471e29043e",
+    "acceptance-41dfa9b9c02f4c636f54613e06aa6ca7e29cdf72e0c29193217bf940810025b0",
+    "acceptance-50df747f6c6da3840d0834b976fd2229c8ac8e08490209c3942dc09ab62a951d",
+    "acceptance-5e5709bdb3331b176d666840c27baeed85e5a525a6ae01b3a8539101ac034942",
+    "acceptance-73a59f2bd81894f10d3745409a48561a51dbb10bc7902b6c5df2f2bbcdddf40d",
+    "acceptance-7e8199ab6ce2732b6c4a34dc2f60386178cd353d4e849870497b10257bfb79cd",
+    "acceptance-ac4a910982053ee2fa210f2a310af3d2684f85cf5e1d6fada1e1e6b64f3df50f",
+    "acceptance-af06efb98ce74fc07d97d31881f2d6a42c2b61be2a87b20947f59c48e0bc34b7",
+    "acceptance-b40822ca099184f467613faae272412a5e3645a7577ca254cea3e8b6b4f9bdfa",
+    "acceptance-bd81e1cd23fb7ec2b89313e28cc8a607007dc89dde41697167a4058a1cb81d50",
+    "acceptance-c801ca3c9009dda48a705455195f80529084480b332bbf2cee080cb555e7e804",
+    "acceptance-e32ec36b9b083532df537d8ebbb7d9c5f7632f94ec95be22423b978dedc59bd3"
+  ],
+  "actor": "native-runtime:command:zsh",
+  "issuedAt": "2026-08-12T09:08:01.996Z",
+  "evidence": {
+    "executable": "zsh",
+    "args": [
+      "-lc",
+      "export PATH=/Users/zhangshuo12/.nvm/versions/node/v20.20.0/bin:$PATH; export DEVGO_TEST_BUILD=\"$(mktemp -d)\"; pnpm exec tsc -p tests/tsconfig.network.json --outDir \"$DEVGO_TEST_BUILD\" && DEVGO_NETWORK_MODULE=\"file://$DEVGO_TEST_BUILD/network.js\" node --test tests/network-bypass.test.mjs && pnpm compile && pnpm exec eslint src/utils/network.ts src/features/popup/NetworkPage.tsx tests/network-bypass.test.mjs && pnpm exec prettier --check src/utils/network.ts src/features/popup/NetworkPage.tsx tests/network-bypass.test.mjs tests/tsconfig.network.json docs/comet/changes/wildcard-bypass-domains/brief.md docs/comet/changes/wildcard-bypass-domains/specs/network-bypass-rules/spec.md"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "signal": null,
+    "timedOut": false,
+    "timeoutMs": 120000,
+    "startedAt": "2026-08-12T09:07:44.302Z",
+    "endedAt": "2026-08-12T09:08:01.996Z",
+    "worktree": {
+      "provider": "git",
+      "root": ".",
+      "beforeCommit": "c6d7d165e042c55f5b27780f3f56c4c3c422132e",
+      "afterCommit": "c6d7d165e042c55f5b27780f3f56c4c3c422132e"
+    },
+    "afterFence": {
+      "snapshotHash": "3a0295b5e18ae99958753709266a522dca97f06e3e78852bedc557bf45f84bbc",
+      "scopeHash": "4a37b3aac457eef4e29d2ba6a1a37ad270d6984ee50db8b05e463b9522d6c271",
+      "matched": true
+    },
+    "outputHash": "b57b4767c7fcb7013e14a642dce5898c7a64c084ae3164bfa32c1038e2acd53f",
+    "outputSummary": "TAP version 13\n# Subtest: normalizes wildcard bypass domains and discards invalid entries\nok 1 - normalizes wildcard bypass domains and discards invalid entries\n  ---\n  duration_ms: 4.048917\n  ...\n# Subtest: bypasses subdomains but not the wildcard root domain\nok 2 - bypasses subdomains but not the wildcard root domain\n  ---\n  duration_ms: 2.240167\n  ...\n# Subtest: uses bypass rules before automatic-mode proxy rules\nok 3 - uses bypass rules before automatic-mode proxy rules\n  ---\n  duration_ms: 1.735875\n  ...\n1..3\n# tests 3\n# suites 0\n# pass 3\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 119.436042\n\n> dev-go@0.0.8 compile /Users/zhangshuo12/.codex/worktrees/b111/dev-go/.worktrees/wildcard-bypass-domains\n> tsc --noEmit\n\nChecking formatting...\nAll matched files use Prettier code style!",
+    "outputTruncated": false
+  },
+  "receiptHash": "f3d04bd40d09d33278e832fef38428ac0800d7607e073a0cae1331d8f40ef040"
+}

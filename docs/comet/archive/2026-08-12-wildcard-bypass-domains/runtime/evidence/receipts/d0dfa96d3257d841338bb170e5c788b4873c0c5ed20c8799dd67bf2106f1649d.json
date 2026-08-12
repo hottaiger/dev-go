@@ -1,0 +1,59 @@
+{
+  "schema": "comet.native.verification-receipt.v3",
+  "kind": "automated-check",
+  "role": "acceptance-evidence",
+  "status": "failed",
+  "bindings": {
+    "change": "wildcard-bypass-domains",
+    "sourceRevision": 3,
+    "contractHash": "5d439c2cbe1dbe3a60e44fd8aea543133993481a85e387e04c760f077b469354",
+    "scopeHash": "4a37b3aac457eef4e29d2ba6a1a37ad270d6984ee50db8b05e463b9522d6c271",
+    "snapshotHash": "3a0295b5e18ae99958753709266a522dca97f06e3e78852bedc557bf45f84bbc",
+    "artifactHash": "f5f6ce3987379a7544e3f9397b22d5d0ec08d0cfea83f1dfd64d9d392c1fb1b9"
+  },
+  "acceptanceIds": [
+    "acceptance-2c1fb45e905a494cfe2842ec5b3326e91f4669ad86fcec7bc39680471e29043e",
+    "acceptance-41dfa9b9c02f4c636f54613e06aa6ca7e29cdf72e0c29193217bf940810025b0",
+    "acceptance-50df747f6c6da3840d0834b976fd2229c8ac8e08490209c3942dc09ab62a951d",
+    "acceptance-5e5709bdb3331b176d666840c27baeed85e5a525a6ae01b3a8539101ac034942",
+    "acceptance-73a59f2bd81894f10d3745409a48561a51dbb10bc7902b6c5df2f2bbcdddf40d",
+    "acceptance-7e8199ab6ce2732b6c4a34dc2f60386178cd353d4e849870497b10257bfb79cd",
+    "acceptance-ac4a910982053ee2fa210f2a310af3d2684f85cf5e1d6fada1e1e6b64f3df50f",
+    "acceptance-af06efb98ce74fc07d97d31881f2d6a42c2b61be2a87b20947f59c48e0bc34b7",
+    "acceptance-b40822ca099184f467613faae272412a5e3645a7577ca254cea3e8b6b4f9bdfa",
+    "acceptance-bd81e1cd23fb7ec2b89313e28cc8a607007dc89dde41697167a4058a1cb81d50",
+    "acceptance-c801ca3c9009dda48a705455195f80529084480b332bbf2cee080cb555e7e804",
+    "acceptance-e32ec36b9b083532df537d8ebbb7d9c5f7632f94ec95be22423b978dedc59bd3"
+  ],
+  "actor": "native-runtime:command:zsh",
+  "issuedAt": "2026-08-12T09:06:29.315Z",
+  "evidence": {
+    "executable": "zsh",
+    "args": [
+      "-lc",
+      "export DEVGO_TEST_BUILD=\"$(mktemp -d)\"; pnpm exec tsc -p tests/tsconfig.network.json --outDir \"$DEVGO_TEST_BUILD\" && DEVGO_NETWORK_MODULE=\"file://$DEVGO_TEST_BUILD/network.js\" node --test tests/network-bypass.test.mjs && pnpm compile && pnpm exec eslint src/utils/network.ts src/features/popup/NetworkPage.tsx tests/network-bypass.test.mjs && pnpm exec prettier --check src/utils/network.ts src/features/popup/NetworkPage.tsx tests/network-bypass.test.mjs tests/tsconfig.network.json docs/comet/changes/wildcard-bypass-domains/brief.md docs/comet/changes/wildcard-bypass-domains/specs/network-bypass-rules/spec.md"
+    ],
+    "cwd": ".",
+    "exitCode": 1,
+    "signal": null,
+    "timedOut": false,
+    "timeoutMs": 120000,
+    "startedAt": "2026-08-12T09:06:28.035Z",
+    "endedAt": "2026-08-12T09:06:29.315Z",
+    "worktree": {
+      "provider": "git",
+      "root": ".",
+      "beforeCommit": "c6d7d165e042c55f5b27780f3f56c4c3c422132e",
+      "afterCommit": "c6d7d165e042c55f5b27780f3f56c4c3c422132e"
+    },
+    "afterFence": {
+      "snapshotHash": "3a0295b5e18ae99958753709266a522dca97f06e3e78852bedc557bf45f84bbc",
+      "scopeHash": "4a37b3aac457eef4e29d2ba6a1a37ad270d6984ee50db8b05e463b9522d6c271",
+      "matched": true
+    },
+    "outputHash": "d5d1fbb23434cfd78cdff9b73fdcb79f770d3e9e1f546da26e41d506559c3d52",
+    "outputSummary": "TAP version 13\n# Subtest: /Users/zhangshuo12/.codex/worktrees/b111/dev-go/.worktrees/wildcard-bypass-domains/tests/network-bypass.test.mjs\nnot ok 1 - /Users/zhangshuo12/.codex/worktrees/b111/dev-go/.worktrees/wildcard-bypass-domains/tests/network-bypass.test.mjs\n  ---\n  duration_ms: 79.659542\n  failureType: 'subtestsFailed'\n  exitCode: 1\n  stdout: ''\n  stderr: |-\n    (node:87904) ExperimentalWarning: The test runner is an experimental feature. This feature could change at any time\n    (Use `node --trace-warnings ...` to show where the warning was created)\n    (node:87904) Warning: To load an ES module, set \"type\": \"module\" in the package.json or use the .mjs extension.\n    /private/var/folders/kz/xbtdd79s20n98h_0362gqm200000gn/T/tmp.erwwpsCPaf/network.js:50\n    export function normalizeBypassList(value) {\n    ^^^^^^\n    \n    SyntaxError: Unexpected token 'export'\n        at Object.compileFunction (node:vm:360:18)\n        at wrapSafe (node:internal/modules/cjs/loader:1124:15)\n        at Module._compile (node:internal/modules/cjs/loader:1160:27)\n        at Object.Module._extensions..js (node:internal/modules/cjs/loader:1250:10)\n        at Module.load (node:internal/modules/cjs/loader:1074:32)\n        at Function.Module._load (node:internal/modules/cjs/loader:909:12)\n        at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:169:29)\n        at ModuleJob.run (node:internal/modules/esm/module_job:193:25)\n        at async Promise.all (index 0)\n        at async ESMLoader.import (node:internal/modules/esm/loader:530:24)\n    \n  error: 'test failed'\n  code: 'ERR_TEST_FAILURE'\n  ...\n1..1\n# tests 1\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 81.887375",
+    "outputTruncated": false
+  },
+  "receiptHash": "d0dfa96d3257d841338bb170e5c788b4873c0c5ed20c8799dd67bf2106f1649d"
+}

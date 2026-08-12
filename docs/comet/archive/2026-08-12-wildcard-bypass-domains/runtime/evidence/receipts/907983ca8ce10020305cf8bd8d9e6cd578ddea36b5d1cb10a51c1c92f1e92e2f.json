@@ -1,0 +1,30 @@
+{
+  "schema": "comet.native.verification-receipt.v3",
+  "kind": "static-inspection",
+  "role": "required-check",
+  "status": "passed",
+  "bindings": {
+    "change": "wildcard-bypass-domains",
+    "sourceRevision": 3,
+    "contractHash": "5d439c2cbe1dbe3a60e44fd8aea543133993481a85e387e04c760f077b469354",
+    "scopeHash": "4a37b3aac457eef4e29d2ba6a1a37ad270d6984ee50db8b05e463b9522d6c271",
+    "snapshotHash": "3a0295b5e18ae99958753709266a522dca97f06e3e78852bedc557bf45f84bbc",
+    "artifactHash": "f5f6ce3987379a7544e3f9397b22d5d0ec08d0cfea83f1dfd64d9d392c1fb1b9"
+  },
+  "acceptanceIds": [],
+  "actor": "native-runtime:scoped-text-safety",
+  "issuedAt": "2026-08-12T09:10:59.936Z",
+  "evidence": {
+    "subjects": [
+      "src/features/popup/NetworkPage.tsx",
+      "src/utils/network.ts",
+      "tests/network-bypass.test.mjs",
+      "tests/tsconfig.network.json"
+    ],
+    "rule": "scoped-text-safety",
+    "resultSummary": "The built-in scoped inspection passed without skipped or blocking input.",
+    "checkReceiptRef": "runtime/evidence/check-receipts/2e6a9358ef8a87086afe42f1399e263d956deafe058260ba545b9af531c4bc22.json",
+    "checkReceiptHash": "2e6a9358ef8a87086afe42f1399e263d956deafe058260ba545b9af531c4bc22"
+  },
+  "receiptHash": "907983ca8ce10020305cf8bd8d9e6cd578ddea36b5d1cb10a51c1c92f1e92e2f"
+}

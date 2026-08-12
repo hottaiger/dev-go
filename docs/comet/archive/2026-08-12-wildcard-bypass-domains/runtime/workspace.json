@@ -1,0 +1,14 @@
+{
+  "schema": "comet.native.workspace.v3",
+  "capturedAt": "2026-08-12T08:30:59.412Z",
+  "capturedRevision": 1,
+  "nativeRootRef": "docs/comet",
+  "projectRootId": "d37cd40bdeb80868d538cd267e6b247338726cea3e56a986c2c606bec1d4f476",
+  "nativeRootId": "69641251ad8dd08c851ee66191d27c44a8e2c5f56f86652fcf3b021f534c5efd",
+  "projectRootPathId": "b72720a9e8771158d7030012f2011d90c08170a5ae2e610d25aef8d5c8016dfd",
+  "nativeRootPathId": "911b7d2688e6e7a043a1c4d351d056fcccda2ab6875007c4162f408b72cd9dd8",
+  "isolation": "worktree",
+  "changeBranch": "comet/wildcard-bypass-domains",
+  "targetBranch": "main",
+  "finish": "pull-request"
+}

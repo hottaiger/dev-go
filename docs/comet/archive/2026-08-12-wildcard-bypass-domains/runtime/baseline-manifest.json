@@ -1,0 +1,722 @@
+{
+  "schema": "comet.native.content-snapshot.v1",
+  "origin": "change-created",
+  "capture": {
+    "provider": "git"
+  },
+  "createdAt": "2026-08-12T08:30:59.322Z",
+  "complete": true,
+  "limits": {
+    "maxFiles": 10000,
+    "maxFileBytes": 268435456,
+    "maxTotalBytes": 268435456,
+    "maxManifestBytes": 1048576,
+    "maxDurationMs": 60000
+  },
+  "policy": {
+    "schema": "comet.native.snapshot-policy.v1",
+    "include": ["**/*"],
+    "exclude": [
+      ".agents/skills/**",
+      ".amazonq/skills/**",
+      ".augment/skills/**",
+      ".bob/skills/**",
+      ".claude/skills/**",
+      ".cline/skills/**",
+      ".codebuddy/skills/**",
+      ".continue/skills/**",
+      ".cospec/skills/**",
+      ".crush/skills/**",
+      ".cursor/skills/**",
+      ".factory/skills/**",
+      ".forge/skills/**",
+      ".gemini/skills/**",
+      ".github/skills/**",
+      ".iflow/skills/**",
+      ".junie/skills/**",
+      ".kilocode/skills/**",
+      ".kimi-code/skills/**",
+      ".kiro/skills/**",
+      ".lingma/skills/**",
+      ".mimocode/skills/**",
+      ".opencode/skills/**",
+      ".pi/skills/**",
+      ".qoder/skills/**",
+      ".qwen/skills/**",
+      ".roo/skills/**",
+      ".trae-cn/skills/**",
+      ".trae/skills/**",
+      ".windsurf/skills/**",
+      ".zcode/skills/**"
+    ],
+    "hash": "1b4c47ee1cdc72323c591ca8b9c7a7a8c123dfe64880b6c65dc768e2bb965385"
+  },
+  "entries": [
+    {
+      "path": "__test__.html",
+      "hash": "949fc620cc5c98f7adca30ff026fd65dc43192f9e9e60834a29a79b541d7240c",
+      "size": 3433,
+      "type": "file",
+      "gitObjectId": "ffc94e720632171ea27a0004aa10e11161430a26"
+    },
+    {
+      "path": ".codex/hooks.json",
+      "hash": "9326d002c59cf2e0f69f174c46b565950017dcb7f2055a69f69ea482172217a2",
+      "size": 471,
+      "type": "file"
+    },
+    {
+      "path": ".cz-config.cjs",
+      "hash": "3e4fcea10bef02b26869920d9946a427461b07a5c2b67fb77b8e263fe84c270c",
+      "size": 1981,
+      "type": "file",
+      "gitObjectId": "09df4e4f0f76ae55d3159ab626a6c4884767d27b"
+    },
+    {
+      "path": ".github/workflows/submit.yml",
+      "hash": "a84e64db9350d315f33341d850821442a832cd1f11b6e1b64ab441675af0b70c",
+      "size": 672,
+      "type": "file",
+      "gitObjectId": "fcc44dc6514274cafc98540063b87411d22bf45b"
+    },
+    {
+      "path": ".gitignore",
+      "hash": "49a188037e3c24e31a16b1c894b002e21d24d6092108694ffb2ef5839da66382",
+      "size": 613,
+      "type": "file",
+      "gitObjectId": "503c5a0ff0a760c20d74be593f82bbb6454ba76e"
+    },
+    {
+      "path": ".husky/commit-msg",
+      "hash": "2fdadc5ee6d4b7a44823c61b714e180b15688fd7520b9946da976fdbc5d0eb01",
+      "size": 80,
+      "type": "file",
+      "gitObjectId": "e8511eaeaf61dd7e09c3e9f35cdee6c636568f1c"
+    },
+    {
+      "path": ".husky/pre-commit",
+      "hash": "dc57ce00a4508c379cd813aa3b4422937cfd51b87cd4486777b777f74b6b4f32",
+      "size": 82,
+      "type": "file",
+      "gitObjectId": "cf0c46b936c647a48c38cfbf9d837b280fcbb754"
+    },
+    {
+      "path": ".prettierignore",
+      "hash": "f69648bd7bd4faae1e856e3f1db1a15b40df251baa68f3079fe0b3e957bde60e",
+      "size": 185,
+      "type": "file",
+      "gitObjectId": "26a3ab871b1d36c4160abd96c5bbcb68ae30867e"
+    },
+    {
+      "path": ".prettierrc.cjs",
+      "hash": "f4fe962b1dc3d72b827287d32f8f6d77ea9c628bd70305ef80ab1fc0ea4d5aee",
+      "size": 1302,
+      "type": "file",
+      "gitObjectId": "b802dbe9c0e5403288433e9dafbede34f641d34b"
+    },
+    {
+      "path": "AGENTS.md",
+      "hash": "4228b7f4193ea120733d3defd409db8991c1f1ccd10593f5ad4dbff9248d8f69",
+      "size": 997,
+      "type": "file",
+      "gitObjectId": "fe1ee7bd6359e3533c6f077f27ad647b23052a9e"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "hash": "a2a37ed4dc667426428b7633bd17c6dee1683f7e1cf343d43015d52fad9be9bb",
+      "size": 3237,
+      "type": "file",
+      "gitObjectId": "3a30ad661ca9c43ad2427056c1ec8d23835cf81b"
+    },
+    {
+      "path": "CLAUDE.md",
+      "hash": "0d328f84a847bf189beca9cd78c150d4248ff54a094d7d131c91a90b8869c692",
+      "size": 5095,
+      "type": "file",
+      "gitObjectId": "dd312d0f1c764d4124f17c892adcce9da205033c"
+    },
+    {
+      "path": "commitlint.config.cjs",
+      "hash": "3afe24e37063db60983aa31006214cf908d4d296cd8204266b14ebc0c58d8ac8",
+      "size": 37,
+      "type": "file",
+      "gitObjectId": "44eb2ebee1b71682b777c7574334d42e5fa045c9"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "hash": "6c493e6f308d6ee77fcbf6d4d8a254d5fd6dd082cc85295668ef0e15a2a7ff64",
+      "size": 3706,
+      "type": "file",
+      "gitObjectId": "8edda3d5208af9d247e772d60515df9ab9cde02b"
+    },
+    {
+      "path": "package.json",
+      "hash": "480c500b01e9df048338571081060c2f9890230349a7b17915e7fcd7c72c39be",
+      "size": 2527,
+      "type": "file",
+      "gitObjectId": "cbd521ba9623b10e7a7eb7d5715a4beb1446b971"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "hash": "626160a60c9b6c660d5502f5754b52076852123c37c466c785a00576a2d478f0",
+      "size": 291489,
+      "type": "file",
+      "gitObjectId": "b357aec78f9a87752fc39dd5654bc9d2cd4b1302"
+    },
+    {
+      "path": "README.md",
+      "hash": "afd456095381f0d6d7c68de97293cf8a68631c7f24c51a830a2c6f7a7e76ca2e",
+      "size": 3061,
+      "type": "file",
+      "gitObjectId": "812aed510cd69e8ad3576eb4e9e16d243cdf98d1"
+    },
+    {
+      "path": "RECORD.md",
+      "hash": "c212312c644a0df4f0d547bc976fab04bf3943fdae3f3c8ca18538cb266bea61",
+      "size": 13592,
+      "type": "file",
+      "gitObjectId": "7bc2301f03071737e9e2a00bb9fdd6ccda331876"
+    },
+    {
+      "path": "src/api/lookup.ts",
+      "hash": "bfa84a59d60fee48f044ec02a85650eb7eaf585becc34f46e424394e8a6f73b5",
+      "size": 1803,
+      "type": "file",
+      "gitObjectId": "8b4f302aa890b8faf8cf67e5283bf381f64cb850"
+    },
+    {
+      "path": "src/api/microsoft.ts",
+      "hash": "6fbce7d952e60c627eaed349a8130b23ddc94ebd738203032550b4e536ca044d",
+      "size": 7195,
+      "type": "file",
+      "gitObjectId": "63d95c13698b941d5422606921b68462dc4ec0f9"
+    },
+    {
+      "path": "src/api/translator.ts",
+      "hash": "50b044d8fc0a93476153505f23449e3e199d6aa5ebc6a9737fd34b8aac387fd2",
+      "size": 3915,
+      "type": "file",
+      "gitObjectId": "e9659748356f6e86181eeaae327edbc520f540fc"
+    },
+    {
+      "path": "src/assets/copy.svg",
+      "hash": "54e153864e3ca54c6e0630a6df74e2860727f50ff2380616e866c6e905067cc8",
+      "size": 701,
+      "type": "file",
+      "gitObjectId": "40f22394b5a2bfb2e9527067ab5827b71c7a5825"
+    },
+    {
+      "path": "src/assets/global.css",
+      "hash": "1ba351c6edefbab1a12a32420274fcf4db9426b3fcf3ec3fc13998edbd7e2841",
+      "size": 27068,
+      "type": "file",
+      "gitObjectId": "229054fabad0d73061e8fdaa76345222a0e13665"
+    },
+    {
+      "path": "src/assets/icon.png",
+      "hash": "f203b7c4c732d17998a077e25e3b67bda50cbf2a894d5e4d8df419d8524feaf0",
+      "size": 16793,
+      "type": "file",
+      "gitObjectId": "79aa6ef7d1c56840a1b3a1062de5944abc918c5f"
+    },
+    {
+      "path": "src/entrypoints/background.ts",
+      "hash": "3d40ce0f90aafe0ddca3d05ac0662518ae0864aa576949af86920f7e3e218d59",
+      "size": 33302,
+      "type": "file",
+      "gitObjectId": "7ed52c5a3ff1a7207edb0e32e1b66fc52ba6d529"
+    },
+    {
+      "path": "src/entrypoints/cors-bridge.content.ts",
+      "hash": "cfa0849b6f9929bb27750ed77331ad2d840c7194323f850d9cb0d09e4859c3ff",
+      "size": 3888,
+      "type": "file",
+      "gitObjectId": "86da9c32b0254bc17cdeb02d673da6ddc2d2acd9"
+    },
+    {
+      "path": "src/entrypoints/cors-proxy.ts",
+      "hash": "213a94e9ff5ed3909cfe3bd796b807b0d6bcc60a75114ce68252a460d1bb690d",
+      "size": 12247,
+      "type": "file",
+      "gitObjectId": "0b941e124e3bb5095fef6269552b6d64686e092e"
+    },
+    {
+      "path": "src/entrypoints/github.content.tsx",
+      "hash": "4201bde8ac16c9fa64d3db072c1b0d5ada9e8d833ad6a8f957a3b0debf3aee48",
+      "size": 1491,
+      "type": "file",
+      "gitObjectId": "d5a5e60ac752666fcf20edc22212004963af82e2"
+    },
+    {
+      "path": "src/entrypoints/link-go.content.ts",
+      "hash": "cfc2430f30e92355c2afe76515e9f9505a5267a109d8ac9b73661767a07b6cb7",
+      "size": 953,
+      "type": "file",
+      "gitObjectId": "4441322f3ae4ada588523aa89d0e410ae6402449"
+    },
+    {
+      "path": "src/entrypoints/newtab/App.tsx",
+      "hash": "7c365ddf8a4d07b1958d4baaa6666f955cda3b04b34c2fc95d23ffddad125d81",
+      "size": 110,
+      "type": "file",
+      "gitObjectId": "b02c0e739aa06d06a3b3f76d4bea53d8b4cb01b6"
+    },
+    {
+      "path": "src/entrypoints/newtab/index.html",
+      "hash": "1f9d38cb153c7d7ad95fb8314dfba78d25fd329fe850e687cec2958218720d99",
+      "size": 319,
+      "type": "file",
+      "gitObjectId": "02a984ec37cd94d65128a75986bae2d03f80e77e"
+    },
+    {
+      "path": "src/entrypoints/newtab/main.tsx",
+      "hash": "100056d41f5d3c8afe9b53e4a315ef1382eeb0891f3eb6b370dc78dc641b042d",
+      "size": 506,
+      "type": "file",
+      "gitObjectId": "c386a9547ceb65ee47b5bce81fdaece27243e801"
+    },
+    {
+      "path": "src/entrypoints/options/App.tsx",
+      "hash": "7cf896ee7308c0a96c9a820ac5215f1ea5d15d83178f42f08cc4f27ae74df7bf",
+      "size": 653,
+      "type": "file",
+      "gitObjectId": "8fbb91893bd3a54496f9e8d0ec80fb8f8b7d19e0"
+    },
+    {
+      "path": "src/entrypoints/options/index.html",
+      "hash": "0844430a7e08971e6a5915fd9f4b02d29a1932b21263076bcfdd407b258043dc",
+      "size": 299,
+      "type": "file",
+      "gitObjectId": "624297ba756afd9e71a82e47161a58eb65125848"
+    },
+    {
+      "path": "src/entrypoints/options/main.tsx",
+      "hash": "d6d324c6f0eff95e06950bfa2ee871a5b4ebdd825a2c976d20cf779a156ccc38",
+      "size": 242,
+      "type": "file",
+      "gitObjectId": "9f4729490a094aad1cface745274746930b36426"
+    },
+    {
+      "path": "src/entrypoints/popup/App.tsx",
+      "hash": "16a795894535a6a0fbf714760ad661377e5db645e3a0bd6c9f15ba8e6414a42b",
+      "size": 6030,
+      "type": "file",
+      "gitObjectId": "23f477a80b3c5f679dbcd05f5fc33b94a49e1c85"
+    },
+    {
+      "path": "src/entrypoints/popup/index.html",
+      "hash": "b4c7038c4cc751dfd0115cbf86e2b21d58a4e707985979aba60a29512a436af9",
+      "size": 292,
+      "type": "file",
+      "gitObjectId": "0599e5fa63ede687505707f2177f50f746c4e231"
+    },
+    {
+      "path": "src/entrypoints/popup/main.tsx",
+      "hash": "22cfdc013be859cdec05ed0e8bc3a451def5005d46b7ea8e3e7a5a62bce3b677",
+      "size": 560,
+      "type": "file",
+      "gitObjectId": "773ae7aef324e7db3ce258466abf3113e6c922ff"
+    },
+    {
+      "path": "src/entrypoints/selection.content.tsx",
+      "hash": "0117a5606b67d63d187d6a680944df7b1b9688e54032210f4a349eaac585ba25",
+      "size": 1461,
+      "type": "file",
+      "gitObjectId": "e6a515b2346c2e6499a3439e7736299b41e50566"
+    },
+    {
+      "path": "src/entrypoints/translate.content.ts",
+      "hash": "0728030b6e3ec5919d84e20fccd6677dc2c503ab8c6cda435d0a7fdd7b4337a0",
+      "size": 31391,
+      "type": "file",
+      "gitObjectId": "7399032f1a907888e9a844c2455b8af42586ac32"
+    },
+    {
+      "path": "src/entrypoints/unlock.content.ts",
+      "hash": "e8415a6f54fb76c9535741122ed7bee5633baf17225c68425599d15c91735ed7",
+      "size": 1116,
+      "type": "file",
+      "gitObjectId": "c3473774f91ca634f6d0458d62bf0522a03f9bcd"
+    },
+    {
+      "path": "src/features/github/components/FloatButton.tsx",
+      "hash": "b4c76c1f6d6c32dcc8b340950b00388a316b7dfe2c7e6cece36e4448daac7b9b",
+      "size": 1842,
+      "type": "file",
+      "gitObjectId": "f552f3d4f60a74d6e6de42012fb8c1ca04201606"
+    },
+    {
+      "path": "src/features/github/components/icons.tsx",
+      "hash": "da61f335b8cda0bc1d61ae9ad56669a0804a881f32f56616bcffb138c51d298c",
+      "size": 1046,
+      "type": "file",
+      "gitObjectId": "7ec1b0de5fedba424aaeba54bd2a62e044403893"
+    },
+    {
+      "path": "src/features/github/GithubApp.tsx",
+      "hash": "db6449eed11546d9ab00867c1a7e189081118bd317814cab6c4d544142d520d3",
+      "size": 2263,
+      "type": "file",
+      "gitObjectId": "4a5cbb21a4a974c3221fe86ada1f4c10cb90b66b"
+    },
+    {
+      "path": "src/features/github/style.css",
+      "hash": "11b8e69e89a31e87e25ec43c92ffcddd0cb794db757d6167ae31ee058f9ea425",
+      "size": 23,
+      "type": "file",
+      "gitObjectId": "d4b5078586e291f9dc7d6f04a380aa3c1b52b84b"
+    },
+    {
+      "path": "src/features/github/useScrollToTop.ts",
+      "hash": "c113b56d265a7f7a900d1b81155d6110cbc7bfbd4dbb9f0d3c93161ac9336a6d",
+      "size": 743,
+      "type": "file",
+      "gitObjectId": "b6d822d6a2cd2bee377867984a629881903475ba"
+    },
+    {
+      "path": "src/features/github/utils.ts",
+      "hash": "afbab9c1efc4f8a835db6c7f7def367d04936aa0aae7df3fc372af9ea7d6d6c0",
+      "size": 1827,
+      "type": "file",
+      "gitObjectId": "5bae9a96f329c28c9d22034380f9dbdff88cf9be"
+    },
+    {
+      "path": "src/features/newtab/categories.ts",
+      "hash": "faa88c1f646a0f6c6304a0985ed177b6b0317600146f3efb321f42e5ae627cdb",
+      "size": 1963,
+      "type": "file",
+      "gitObjectId": "4d90d442f07a2e20f339fefd0b608b5a0634aeb5"
+    },
+    {
+      "path": "src/features/newtab/CategoryTabs.tsx",
+      "hash": "488041c60f2496a1baf01496b37cd941805b031de7cfc3943e7f82d8236c6ad5",
+      "size": 3568,
+      "type": "file",
+      "gitObjectId": "f7fe4094c7d01f407572ffc4fefc9e550abed965"
+    },
+    {
+      "path": "src/features/newtab/config.ts",
+      "hash": "0951d19ab083bb09d04ab082e4cbb64c034a61b72461e951db1a90c7e433e13d",
+      "size": 4651,
+      "type": "file",
+      "gitObjectId": "beaede20441f2b19a404f1279baaa7c48f096d2c"
+    },
+    {
+      "path": "src/features/newtab/engines.ts",
+      "hash": "6e4af9157eaaf86ab4bd33757d7ceb10502d766f459fdd93b458728097247f8d",
+      "size": 16184,
+      "type": "file",
+      "gitObjectId": "abbe4e29199d49b78d2522a28a66d629eadd9659"
+    },
+    {
+      "path": "src/features/newtab/faviconCache.ts",
+      "hash": "6aeef89bea87970644ce3d084479cd26997df41f7794327f5fe79f209833148d",
+      "size": 8519,
+      "type": "file",
+      "gitObjectId": "1e7bf723172c0f23fdfc10b671abbb066bb24c61"
+    },
+    {
+      "path": "src/features/newtab/navUrl.ts",
+      "hash": "3d15795cb9b923658877d04d3e8ded6cdc697e34baf950107df10af351b0742c",
+      "size": 1045,
+      "type": "file",
+      "gitObjectId": "9f1ac3502c1fb1e70e03b12268bf89aa0e7137a2"
+    },
+    {
+      "path": "src/features/newtab/NewTabApp.tsx",
+      "hash": "7eed9e51ccd95ac75a239711ddaab26ba545e81101e916db18640248b2ad460a",
+      "size": 24893,
+      "type": "file",
+      "gitObjectId": "907643a0f7ad9f7fae7de95ae91f79978749b0da"
+    },
+    {
+      "path": "src/features/newtab/PinnedNav.tsx",
+      "hash": "5c029d3bb21e6da22241a6e1a3ba5eb44a45050b399f1f937300adb1ffa7dd13",
+      "size": 3074,
+      "type": "file",
+      "gitObjectId": "f09f8d2b1996f14b54397eecefa23ba49f473781"
+    },
+    {
+      "path": "src/features/newtab/QuickNav.tsx",
+      "hash": "440205c79c5cc5ce84a38bab56873726e1b7c5c102888b9bb50142cbd6409a67",
+      "size": 14957,
+      "type": "file",
+      "gitObjectId": "c410feed8e557f8a9b41bfe46c99e37f56bc9add"
+    },
+    {
+      "path": "src/features/newtab/QuietBackground.tsx",
+      "hash": "aa51e40f486be4f4c2449e4e2800de3409a57c6d71cfd3cb6d553f0baa5e1ee9",
+      "size": 26996,
+      "type": "file",
+      "gitObjectId": "bd3a3054385baa0dce02ca5944e2868231251f77"
+    },
+    {
+      "path": "src/features/newtab/SearchBar.tsx",
+      "hash": "9259f310f46ee9674f29ef4d1672f2635f52efb2f405daaaa355eaaead2ffa50",
+      "size": 10184,
+      "type": "file",
+      "gitObjectId": "d6ebce28c2dbb51f0a5e833068105d662a3a99c3"
+    },
+    {
+      "path": "src/features/newtab/SiteIcon.tsx",
+      "hash": "9f9b0fb1368ad5c1d0ba101e382c87395d93b82f3868d3b93d948df551f5484a",
+      "size": 1533,
+      "type": "file",
+      "gitObjectId": "5d0ee2d920bb1ffd48bbc6d92cf2772a049218f0"
+    },
+    {
+      "path": "src/features/newtab/TodoBoard.tsx",
+      "hash": "5a5a9a42af21e650ad58edce23ade4fab5faccb2520dd9a6e5bedbb28f818bb7",
+      "size": 28669,
+      "type": "file",
+      "gitObjectId": "3b06729a1cfd2b87eb271186ae7512e000cf6e30"
+    },
+    {
+      "path": "src/features/newtab/useSuggestions.ts",
+      "hash": "893613769dee15a4a26194565071919a7e660d0cc9d147be6e7f2dd3f4ec3254",
+      "size": 2246,
+      "type": "file",
+      "gitObjectId": "bd6ace74b58798d6fa1ccc2a7dd8384b5cf165df"
+    },
+    {
+      "path": "src/features/popup/FunctionPage.tsx",
+      "hash": "c5574b650e67f488e816a3d4a0722e0de195a31cd012d9f0a0aa58f938aa94eb",
+      "size": 7281,
+      "type": "file",
+      "gitObjectId": "3a2b61019dcb7a7c59c4c2e105e9212ce38d2247"
+    },
+    {
+      "path": "src/features/popup/NetworkPage.tsx",
+      "hash": "6eaff961b5bf197d351fbd61cc295b6bf10a1b122634e8b0e8bb998aaddda757",
+      "size": 47077,
+      "type": "file",
+      "gitObjectId": "490c0263cb2cedc00e8868eeed91123f9948f2f7"
+    },
+    {
+      "path": "src/features/popup/pages.ts",
+      "hash": "3057c847d642b222834e56cda9670139df19323138f33d0d560de43bc17d9b31",
+      "size": 481,
+      "type": "file",
+      "gitObjectId": "17dabfa339c2de22f4e9c4adb4bf183d050100ca"
+    },
+    {
+      "path": "src/features/popup/TodoPage.tsx",
+      "hash": "0fec9e94535f9baa77ead5f1ff6eb304e02cc679f938e97dc7c4eb88cdd97c28",
+      "size": 15380,
+      "type": "file",
+      "gitObjectId": "d9f9020fba7b1eba83b64e8e2d0eb90547e8bcf7"
+    },
+    {
+      "path": "src/features/popup/ToolsPage.tsx",
+      "hash": "3057659b443ea717179fd9a0984d1a327466c293da14e86549badc103fa54a75",
+      "size": 20690,
+      "type": "file",
+      "gitObjectId": "9955b403d6a2883c98b540dc60a9e16e5f8d2990"
+    },
+    {
+      "path": "src/features/popup/TranslatePage.tsx",
+      "hash": "a721820ccbae36c046734fca22bae36d6e0f4549b5851c6fd48be3fccb80250e",
+      "size": 6010,
+      "type": "file",
+      "gitObjectId": "0a71ea5017224d3968d9b370914532c2b363217e"
+    },
+    {
+      "path": "src/features/selection/SelectionApp.tsx",
+      "hash": "8e12464baf321ecef5cd36d7d257db099b996a4c3c943f3fbcd638c1fc313d90",
+      "size": 8866,
+      "type": "file",
+      "gitObjectId": "45d35fcc178d670578ac2e94639fb6388235b3ee"
+    },
+    {
+      "path": "src/features/selection/style.css",
+      "hash": "11b8e69e89a31e87e25ec43c92ffcddd0cb794db757d6167ae31ee058f9ea425",
+      "size": 23,
+      "type": "file",
+      "gitObjectId": "d4b5078586e291f9dc7d6f04a380aa3c1b52b84b"
+    },
+    {
+      "path": "src/features/todo/todo.ts",
+      "hash": "bf5dab406eddd3b62ab299209d39c55b5447c2dae2ecfd1c638a02021dcea09d",
+      "size": 4720,
+      "type": "file",
+      "gitObjectId": "fe0ef4ddd51398d873b05e3316daadbac70ae244"
+    },
+    {
+      "path": "src/features/todo/useTodos.ts",
+      "hash": "05446338bea59d27941c476f088eb031e165405bc0cfb3ff07cb178522aedd64",
+      "size": 2878,
+      "type": "file",
+      "gitObjectId": "1cf662b91ee55a8bc3e396618bf3f42a54763aaf"
+    },
+    {
+      "path": "src/types/assets.d.ts",
+      "hash": "f3efd763d9a7bbae1d56fc923eabded10c03d3f77f388d22d1e13503e9f9993f",
+      "size": 119,
+      "type": "file",
+      "gitObjectId": "95e3ebe178f7af509fc3575ac7f799a30817216e"
+    },
+    {
+      "path": "src/types/dev-backup.d.ts",
+      "hash": "5780918d518f51ea8fd4972649e5cceb90903f402eb3d0f9adcfa131eb7c3817",
+      "size": 47,
+      "type": "file",
+      "gitObjectId": "9925cdef81a2a8bb6b1d014424dbd56f02048bca"
+    },
+    {
+      "path": "src/types/dict.ts",
+      "hash": "9b819579eafbe9ef31b2cf46681812d107ec7c4222d5a442702a14f39878f391",
+      "size": 294,
+      "type": "file",
+      "gitObjectId": "11deeda316ee14e72be2506172193d519b244028"
+    },
+    {
+      "path": "src/types/word.ts",
+      "hash": "dc925dcc3099c602224b7a29846c9034b0e16d59611662441326d1b10ec57196",
+      "size": 513,
+      "type": "file",
+      "gitObjectId": "01339ac8f3da8c7cb775e7597f59d897c84805b8"
+    },
+    {
+      "path": "src/ui/Button.tsx",
+      "hash": "a1ea03acf3ff76839322e96c5d1d7db6c759b6d0509fcafae702563c3ed569a9",
+      "size": 1872,
+      "type": "file",
+      "gitObjectId": "a6309d647f87a9deae207a144ee3f3731d36c5c6"
+    },
+    {
+      "path": "src/ui/Select.tsx",
+      "hash": "8bdb63d09683100982eaff840c094b0a91996c86c13f0e5700a4de734a5d80d1",
+      "size": 3998,
+      "type": "file",
+      "gitObjectId": "5ce986c32ac29694f5f7a5d86accdc1097d81acb"
+    },
+    {
+      "path": "src/ui/Switch.tsx",
+      "hash": "98fe9d12878efd83e8e163916bc2ef49569e0d0f597ff6f14b178f53be0b1b96",
+      "size": 823,
+      "type": "file",
+      "gitObjectId": "de2fc61c53a86f01407df322ef79addb9a269704"
+    },
+    {
+      "path": "src/ui/Tabs.tsx",
+      "hash": "21559a043d6a5352e107fe2ee7ab99b03a4c5bd1603351b5c377a9b69d4573f9",
+      "size": 746,
+      "type": "file",
+      "gitObjectId": "95f58be0b1cc9a19656b4083eee151983189b87d"
+    },
+    {
+      "path": "src/utils/actionIcon.ts",
+      "hash": "3c7f0c0ddf48924377e4fab6fd6c3a9fec404afedd570c58713a8d7ca8804471",
+      "size": 2449,
+      "type": "file",
+      "gitObjectId": "c71b9a0d8c96c49218b2f2a4d509852153f85f1d"
+    },
+    {
+      "path": "src/utils/backup.ts",
+      "hash": "1c2d379556bc9eb8bed3f8d117b20e734390e249bda69c858b0b317feb3cf457",
+      "size": 4598,
+      "type": "file",
+      "gitObjectId": "c7f440c230a8559ed5d43fa07cef2d29b847aab6"
+    },
+    {
+      "path": "src/utils/constants.ts",
+      "hash": "3a690615ebac6fc9609f48f4f821ef4837fec9390b2b2824c9fd79dc46c9a3d0",
+      "size": 346,
+      "type": "file",
+      "gitObjectId": "b171640efdc334cfb74b1fda4ce560a23dd40c98"
+    },
+    {
+      "path": "src/utils/content-settings.ts",
+      "hash": "a1871bb3cc29c132f1520470ace8ac57e4606eaa7593a8b8eb6fdacf340c8e31",
+      "size": 1514,
+      "type": "file",
+      "gitObjectId": "af79da7bea00b97818d91ee8bd3f7391e8a87c8e"
+    },
+    {
+      "path": "src/utils/dev-backup.ts",
+      "hash": "85df5f9e9f6ab7c411a64642adce790d6f85436c09c3f2aa160179688c7cb891",
+      "size": 1066,
+      "type": "file",
+      "gitObjectId": "1f627b4a0880b58379423d42e7982354e26c9ecb"
+    },
+    {
+      "path": "src/utils/ime.ts",
+      "hash": "4365bbbfa66d2010e93c78612c811bd22060d49df454f86f1df821bbd69e5543",
+      "size": 442,
+      "type": "file",
+      "gitObjectId": "6dfe255498db2759eac3bbe869707d39652604fe"
+    },
+    {
+      "path": "src/utils/lang.ts",
+      "hash": "b59513b0502512b725c81c89ed48b894a6d60a2d233a2f3c38d17499bea761f4",
+      "size": 549,
+      "type": "file",
+      "gitObjectId": "5a02d7acdb55b9781781ea670e45d94c26cf6684"
+    },
+    {
+      "path": "src/utils/media.ts",
+      "hash": "0a729efcde08958b5d2e6d7d7678ba904925f094b4712b2c2fc97a3d2a0a70cf",
+      "size": 8455,
+      "type": "file",
+      "gitObjectId": "4005f6a9899e416d4fe6c021bc2d631a000b92ca"
+    },
+    {
+      "path": "src/utils/messaging.ts",
+      "hash": "e52389af36b0fe57c02d91cafdc98cef41b1b4563953ea4c1aedc49e247bcbea",
+      "size": 4831,
+      "type": "file",
+      "gitObjectId": "6eac21b27ac505529bf4b20e15f72934a2723013"
+    },
+    {
+      "path": "src/utils/network.ts",
+      "hash": "e63a6ec916710e74bbdd2e615338868d2c4ecee17b2f6e85ae00632afc8c9b06",
+      "size": 12329,
+      "type": "file",
+      "gitObjectId": "b7e19549849ad3f5e03a6e0895b23b576e189695"
+    },
+    {
+      "path": "src/utils/no-translate.ts",
+      "hash": "8b6d8bbf7bd546be35ea1f821e58135d1910e59b982ec8421a97bd525b0af226",
+      "size": 4612,
+      "type": "file",
+      "gitObjectId": "521e5638a5ef057fe8287f9b4b7fd0f095c62c35"
+    },
+    {
+      "path": "src/utils/settings.ts",
+      "hash": "f2e3d6a4f26a209f79f21ece43ceb798ef19316353565055544139a64976e560",
+      "size": 17595,
+      "type": "file",
+      "gitObjectId": "68661d4e2b7b76a838260993562a5718977c9a4a"
+    },
+    {
+      "path": "src/utils/shortcut.ts",
+      "hash": "a62732fbbecc79e993f55d868ea189770f432269678b034946edd9cc1bda1abd",
+      "size": 813,
+      "type": "file",
+      "gitObjectId": "f634df002f76945f0dcc3470527e80726d33cffb"
+    },
+    {
+      "path": "src/utils/theme.ts",
+      "hash": "da549a55a1f041cd266c2f758cd03f7ec718417959c0e168a014100069a88ba7",
+      "size": 2051,
+      "type": "file",
+      "gitObjectId": "6ed720377b91079e5da7e42feea242b4f7357c1c"
+    },
+    {
+      "path": "tsconfig.json",
+      "hash": "0057ea4b86b38fd6c97bec29c74e026c9ece55fb4f100cff5cddd66473fbf96d",
+      "size": 91,
+      "type": "file",
+      "gitObjectId": "6ad10a00179afde5f0aa173db2001ca48804b7a3"
+    },
+    {
+      "path": "wxt.config.ts",
+      "hash": "0b004610f06315259fb7e255ee990f72bf36f11a5f2008bc9ea1081c86e03240",
+      "size": 3431,
+      "type": "file",
+      "gitObjectId": "8fbdd231ec0b4c1e70ec7d46a2d81bcb182f73d2"
+    }
+  ],
+  "omitted": [],
+  "omittedCount": 0
+}

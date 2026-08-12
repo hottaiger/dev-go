@@ -1,0 +1,30 @@
+# Acceptance evidence
+
+<!-- comet-native:acceptance-evidence:start -->
+
+[ { "acceptance_id": "acceptance-2c1fb45e905a494cfe2842ec5b3326e91f4669ad86fcec7bc39680471e29043e", "status": "passed", "evidence_refs": [ "runtime/evidence/receipts/f3d04bd40d09d33278e832fef38428ac0800d7607e073a0cae1331d8f40ef040.json" ] }, { "acceptance_id": "acceptance-41dfa9b9c02f4c636f54613e06aa6ca7e29cdf72e0c29193217bf940810025b0", "status": "passed", "evidence_refs": [ "runtime/evidence/receipts/f3d04bd40d09d33278e832fef38428ac0800d7607e073a0cae1331d8f40ef040.json" ] }, { "acceptance_id": "acceptance-50df747f6c6da3840d0834b976fd2229c8ac8e08490209c3942dc09ab62a951d", "status": "passed", "evidence_refs": [ "runtime/evidence/receipts/f3d04bd40d09d33278e832fef38428ac0800d7607e073a0cae1331d8f40ef040.json" ] }, { "acceptance_id": "acceptance-5e5709bdb3331b176d666840c27baeed85e5a525a6ae01b3a8539101ac034942", "status": "passed", "evidence_refs": [ "runtime/evidence/receipts/f3d04bd40d09d33278e832fef38428ac0800d7607e073a0cae1331d8f40ef040.json" ] }, { "acceptance_id": "acceptance-73a59f2bd81894f10d3745409a48561a51dbb10bc7902b6c5df2f2bbcdddf40d", "status": "passed", "evidence_refs": [ "runtime/evidence/receipts/f3d04bd40d09d33278e832fef38428ac0800d7607e073a0cae1331d8f40ef040.json" ] }, { "acceptance_id": "acceptance-7e8199ab6ce2732b6c4a34dc2f60386178cd353d4e849870497b10257bfb79cd", "status": "passed", "evidence_refs": [ "runtime/evidence/receipts/f3d04bd40d09d33278e832fef38428ac0800d7607e073a0cae1331d8f40ef040.json" ] }, { "acceptance_id": "acceptance-ac4a910982053ee2fa210f2a310af3d2684f85cf5e1d6fada1e1e6b64f3df50f", "status": "passed", "evidence_refs": [ "runtime/evidence/receipts/f3d04bd40d09d33278e832fef38428ac0800d7607e073a0cae1331d8f40ef040.json" ] }, { "acceptance_id": "acceptance-af06efb98ce74fc07d97d31881f2d6a42c2b61be2a87b20947f59c48e0bc34b7", "status": "passed", "evidence_refs": [ "runtime/evidence/receipts/f3d04bd40d09d33278e832fef38428ac0800d7607e073a0cae1331d8f40ef040.json" ] }, { "acceptance_id": "acceptance-b40822ca099184f467613faae272412a5e3645a7577ca254cea3e8b6b4f9bdfa", "status": "passed", "evidence_refs": [ "runtime/evidence/receipts/f3d04bd40d09d33278e832fef38428ac0800d7607e073a0cae1331d8f40ef040.json" ] }, { "acceptance_id": "acceptance-bd81e1cd23fb7ec2b89313e28cc8a607007dc89dde41697167a4058a1cb81d50", "status": "passed", "evidence_refs": [ "runtime/evidence/receipts/f3d04bd40d09d33278e832fef38428ac0800d7607e073a0cae1331d8f40ef040.json" ] }, { "acceptance_id": "acceptance-c801ca3c9009dda48a705455195f80529084480b332bbf2cee080cb555e7e804", "status": "passed", "evidence_refs": [ "runtime/evidence/receipts/f3d04bd40d09d33278e832fef38428ac0800d7607e073a0cae1331d8f40ef040.json" ] }, { "acceptance_id": "acceptance-e32ec36b9b083532df537d8ebbb7d9c5f7632f94ec95be22423b978dedc59bd3", "status": "passed", "evidence_refs": [ "runtime/evidence/receipts/f3d04bd40d09d33278e832fef38428ac0800d7607e073a0cae1331d8f40ef040.json" ] } ]
+
+<!-- comet-native:acceptance-evidence:end -->
+
+# Commands and results
+
+- `tsc -p tests/tsconfig.network.json --outDir <temp>` + `node --test tests/network-bypass.test.mjs`: 3/3 passed.
+- `pnpm compile`: passed.
+- `pnpm exec eslint src/utils/network.ts src/features/popup/NetworkPage.tsx tests/network-bypass.test.mjs`: passed.
+- `pnpm exec prettier --check <changed files>`: passed.
+
+# Skipped checks
+
+无。
+
+# Spec consistency
+
+测试确认通配符规范化、子域名匹配、根域名排除、无效规则忽略与自动模式绕过优先级；代理模式复用浏览器 `bypassList` 语义。
+
+# Known limitations and risks
+
+未在真实浏览器代理环境手工观察；PAC 单元测试覆盖生成脚本的匹配结果。
+
+# Conclusion
+
+通过。

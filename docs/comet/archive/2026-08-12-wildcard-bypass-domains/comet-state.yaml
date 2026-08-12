@@ -1,0 +1,23 @@
+schema: comet.native.v3
+minimum_runtime_version: 3
+revision: 5
+verification_protocol: legacy-v1
+name: wildcard-bypass-domains
+language: zh-CN
+phase: archive
+brief: brief.md
+approval: confirmed
+approved_contract_hash: 5d439c2cbe1dbe3a60e44fd8aea543133993481a85e387e04c760f077b469354
+spec_changes:
+  - capability: network-bypass-rules
+    operation: create
+    source: specs/network-bypass-rules/spec.md
+    base_hash: null
+verification_result: pass
+verification_report: verification.md
+implementation_scope: runtime/evidence/scopes/4a37b3aac457eef4e29d2ba6a1a37ad270d6984ee50db8b05e463b9522d6c271.json
+verification_evidence: runtime/evidence/verifications/b0e20f83b6e13d670f2a9d8de6a5e9827f13474a121bbacfa6680cfbf6bcbcc7.json
+partial_allowance: null
+archived: true
+created_at: 2026-08-12
+run_id: df20f24a-fa92-4407-9c64-26dd05aab2e9

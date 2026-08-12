@@ -1,0 +1,99 @@
+{
+  "schema": "comet.native.implementation-scope.v2",
+  "contractHash": "5d439c2cbe1dbe3a60e44fd8aea543133993481a85e387e04c760f077b469354",
+  "baselineProjectionRef": "runtime/evidence/snapshots/d19b643bcb444bac42a65b59f27720d2e7add3e701320e4773b719c1f62193a7.json",
+  "baselineProjectionHash": "d19b643bcb444bac42a65b59f27720d2e7add3e701320e4773b719c1f62193a7",
+  "currentProjectionRef": "runtime/evidence/snapshots/3a0295b5e18ae99958753709266a522dca97f06e3e78852bedc557bf45f84bbc.json",
+  "currentProjectionHash": "3a0295b5e18ae99958753709266a522dca97f06e3e78852bedc557bf45f84bbc",
+  "complete": true,
+  "declaredArtifacts": [
+    {
+      "path": "src/features/popup/NetworkPage.tsx",
+      "kind": "file"
+    },
+    {
+      "path": "src/utils/network.ts",
+      "kind": "file"
+    },
+    {
+      "path": "tests/network-bypass.test.mjs",
+      "kind": "file"
+    },
+    {
+      "path": "tests/tsconfig.network.json",
+      "kind": "file"
+    }
+  ],
+  "changes": [
+    {
+      "path": "src/features/popup/NetworkPage.tsx",
+      "kind": "modified",
+      "before": {
+        "hash": "6eaff961b5bf197d351fbd61cc295b6bf10a1b122634e8b0e8bb998aaddda757",
+        "size": 47077
+      },
+      "after": {
+        "hash": "121f1018cf34a30162502f48fe80b40b1f374600266ce5440f37f8266cbf42c9",
+        "size": 47118
+      },
+      "attributedTo": [
+        {
+          "path": "src/features/popup/NetworkPage.tsx",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "src/utils/network.ts",
+      "kind": "modified",
+      "before": {
+        "hash": "e63a6ec916710e74bbdd2e615338868d2c4ecee17b2f6e85ae00632afc8c9b06",
+        "size": 12329
+      },
+      "after": {
+        "hash": "c40d29fc47a7eb7b53d0b731c4b55a3a643e289effde1ae13acfaa21815fd463",
+        "size": 12115
+      },
+      "attributedTo": [
+        {
+          "path": "src/utils/network.ts",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/network-bypass.test.mjs",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "24dfaf8fa50e6e9de9c5b37c9e93eb8c567971fe85dbfde6a13751ee87eb6d1b",
+        "size": 1400
+      },
+      "attributedTo": [
+        {
+          "path": "tests/network-bypass.test.mjs",
+          "kind": "file"
+        }
+      ]
+    },
+    {
+      "path": "tests/tsconfig.network.json",
+      "kind": "added",
+      "before": null,
+      "after": {
+        "hash": "9cb9c3f7af96ccd7f7ddbc4cead79f435e4449b83a4065e0c56c2db1913ca9c3",
+        "size": 245
+      },
+      "attributedTo": [
+        {
+          "path": "tests/tsconfig.network.json",
+          "kind": "file"
+        }
+      ]
+    }
+  ],
+  "unattributed": [],
+  "unresolvedScopes": [],
+  "noCodeReason": null,
+  "scopeHash": "4a37b3aac457eef4e29d2ba6a1a37ad270d6984ee50db8b05e463b9522d6c271"
+}
