@@ -1,0 +1,12 @@
+{
+  "kind": "builder-handoff",
+  "summary": "实现通配符绕过规则的安全规范化、自动模式 PAC 直连优先级和网络面板提示文案。",
+  "addressed_acceptance_ids": ["A1", "A2", "A3", "A4", "A5", "A6", "A7"],
+  "checks": [
+    { "name": "network bypass tests", "result": "passed", "note": "3/3 passed" },
+    { "name": "pnpm compile", "result": "passed", "note": null },
+    { "name": "eslint", "result": "passed", "note": null },
+    { "name": "prettier", "result": "passed", "note": null }
+  ],
+  "known_limits": ["未在真实浏览器代理环境手工观察；PAC 单元测试覆盖生成脚本匹配结果。"]
+}

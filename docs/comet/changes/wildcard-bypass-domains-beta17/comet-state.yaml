@@ -1,0 +1,153 @@
+schema: comet.native.v4
+name: wildcard-bypass-domains-beta17
+language: zh-CN
+phase: verify
+status: active
+state_version: 10
+brief: brief.md
+spec_changes:
+  - capability: network-bypass-rules
+    operation: create
+    source: specs/network-bypass-rules/spec.md
+workspace:
+  isolation: worktree
+  change_branch: comet/wildcard-bypass-domains-beta17
+  target_branch: main
+  finish: pull-request
+loop:
+  stage: verify-ready
+  goal_cycle: 2
+  iteration: 1
+  attempt: 1
+  retry_epoch: 0
+  failed_iteration_count: 0
+  no_progress_count: 0
+  execution_failure_count: 0
+  previous_unresolved_ids: []
+  next_action: run-required-checks-and-dispatch-verifier
+acceptance:
+  - id: A1
+    source: brief.md
+    text: "`*.GUAZI.COM` 保存为 `*.guazi.com`，并使 `www.guazi.com` 与 `api.guazi.com` 直连。"
+    result: pending
+    reason: null
+  - id: A2
+    source: brief.md
+    text: "`*.guazi.com` 不匹配 `guazi.com`；配置 `guazi.com` 后根域名直连。"
+    result: pending
+    reason: null
+  - id: A3
+    source: brief.md
+    text: 自动模式中绕过规则优先于命中的 AutoProxy 代理规则。
+    result: pending
+    reason: null
+  - id: A4
+    source: brief.md
+    text: 空白或非法规则不影响其他有效规则。
+    result: pending
+    reason: null
+  - id: A5
+    source: specs/network-bypass-rules/spec.md
+    text: 绕过列表 MUST 接受每行或逗号分隔的规则，忽略空白或非法规则，并以小写、去重形式保存既有主机名、`<local>` 与 CIDR 规则。
+    result: pending
+    reason: null
+  - id: A6
+    source: specs/network-bypass-rules/spec.md
+    text: 绕过列表 MUST 支持 `*.domain`。该规则 MUST 匹配该域名的任意子域名，且 MUST NOT 匹配根域名。
+    result: pending
+    reason: null
+  - id: A7
+    source: specs/network-bypass-rules/spec.md
+    text: 代理模式与自动模式 MUST 使用相同的绕过语义。自动模式启用 AutoProxy 规则列表时，绕过规则 MUST 优先返回直连。
+    result: pending
+    reason: null
+builder_handoff:
+  candidate_id: 5853a548-aac8-4133-ab3c-b906382094a4
+  identity_provider: skill-coordinated
+  builder_execution_ref: skill-coordinated:builder:79837089-aae9-4901-aacc-09e48a9895e1
+  iteration: 1
+  summary:
+    text: 实现通配符绕过规则的安全规范化、自动模式 PAC 直连优先级和网络面板提示文案。
+    truncated: false
+  addressed_acceptance_ids:
+    - A1
+    - A2
+    - A3
+    - A4
+    - A5
+    - A6
+    - A7
+  checks:
+    - name:
+        text: network bypass tests
+        truncated: false
+      result: passed
+      note:
+        text: 3/3 passed
+        truncated: false
+    - name:
+        text: pnpm compile
+        truncated: false
+      result: passed
+      note: null
+    - name:
+        text: eslint
+        truncated: false
+      result: passed
+      note: null
+    - name:
+        text: prettier
+        truncated: false
+      result: passed
+      note: null
+  checks_truncated: false
+  known_limits:
+    - text: 未在真实浏览器代理环境手工观察；PAC 单元测试覆盖生成脚本匹配结果。
+      truncated: false
+  known_limits_truncated: false
+  submitted_at: 2026-08-12T09:34:19.785Z
+blockers: []
+verification: null
+history:
+  - goal_cycle: 1
+    iteration: 1
+    attempt: 0
+    outcome: recovery
+    unresolved_ids: []
+    summary:
+      text: Native confirmed acceptance criteria changed
+      truncated: false
+    completed_at: 2026-08-12T09:34:06.497Z
+  - goal_cycle: 2
+    iteration: 1
+    attempt: 1
+    outcome: pass
+    unresolved_ids: []
+    summary:
+      text: 已独立复核代码与通过的自动测试、编译、ESLint、Prettier 结果；所有验收项通过。
+      truncated: false
+    completed_at: 2026-08-12T09:34:47.964Z
+  - goal_cycle: 2
+    iteration: 1
+    attempt: 1
+    outcome: recovery
+    unresolved_ids: []
+    summary:
+      text: Local Runtime was unavailable at Archive ready; the synchronized
+        implementation must be verified again.
+      truncated: false
+    completed_at: 2026-08-12T10:38:29.482Z
+history_overflow:
+  dropped_entries: 0
+  first_dropped_at: null
+  last_dropped_at: null
+  outcome_counts:
+    pass: 0
+    fail: 0
+    blocked: 0
+    execution-error: 0
+    recovery: 0
+verification_result: pending
+verification_report: null
+archived: false
+created_at: 2026-08-12T09:31:53.680Z

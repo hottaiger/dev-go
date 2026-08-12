@@ -55,11 +55,7 @@ function extractHostPatternFromUrlLike(value: string): string | null {
     const url = new URL(urlInput)
     return normalizeHostPattern(url.hostname)
   } catch {
-    const withoutScheme = value.replace(WILDCARD_SCHEME_RE, '').replace(URL_SCHEME_RE, '')
-    const host = withoutScheme.startsWith('[')
-      ? withoutScheme.slice(0, withoutScheme.indexOf(']') + 1 || undefined)
-      : withoutScheme.split(/[/?#]/)[0]
-    return host ? normalizeHostPattern(host) : null
+    return null
   }
 }
 
