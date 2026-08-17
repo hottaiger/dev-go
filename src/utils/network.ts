@@ -45,7 +45,7 @@ function normalizeHostPattern(value: string): string {
 
 function extractHostPatternFromUrlLike(value: string): string | null {
   const rawHost = value.replace(WILDCARD_SCHEME_RE, '').replace(URL_SCHEME_RE, '').split(/[/?#]/)[0]
-  const hasSubdomainWildcard = stripPortFromHostPattern(rawHost).startsWith('*.')
+  const hasSubdomainWildcard = /^(?:\*|%2a)\./i.test(stripPortFromHostPattern(rawHost))
   let urlInput = `http://${value}`
   if (WILDCARD_SCHEME_RE.test(value)) {
     urlInput = value.replace(WILDCARD_SCHEME_RE, 'http://')

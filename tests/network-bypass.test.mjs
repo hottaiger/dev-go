@@ -51,6 +51,21 @@ test('preserves wildcard syntax when the browser URL API escapes the asterisk', 
   }
 })
 
+test('restores wildcard syntax from previously encoded bypass rules', () => {
+  const NativeURL = globalThis.URL
+  globalThis.URL = class {
+    constructor(value) {
+      return { hostname: new NativeURL(value).hostname.replace('*', '%2a') }
+    }
+  }
+
+  try {
+    assert.deepEqual(normalizeBypassList('%2A.GUAZI.COM'), ['*.guazi.com'])
+  } finally {
+    globalThis.URL = NativeURL
+  }
+})
+
 test('bypasses subdomains but not the wildcard root domain', () => {
   assert.equal(evaluatePac(profile, '||guazi.com^', 'www.guazi.com'), 'DIRECT')
   assert.equal(evaluatePac(profile, '||guazi.com^', 'guazi.com'), 'PROXY 127.0.0.1:7890')
